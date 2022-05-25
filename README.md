@@ -56,8 +56,8 @@ tasks.named('test') {
 
 ***
 
-## application.yml
-```  H2
+## application.yml - h2
+```java
   spring:
     datasource:
       url: jdbc:h2:tcp://localhost/~/localhost
@@ -78,3 +78,31 @@ tasks.named('test') {
     org.hibernate.SQL: debug
   #  org.hibernate.type: trace
   ```
+***
+
+## application.yml - mysql
+```java
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306//localhost?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: root
+    password:
+
+
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create
+    show_sql: true
+    format_sql: true
+
+#    default_batch_fetch_size: 1000
+
+logging.level:
+  org.hibernate.SQL: debug
+  org.hibernate.type: trace
+  # parameter Binding
+```
