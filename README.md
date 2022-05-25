@@ -78,6 +78,8 @@ tasks.named('test') {
     org.hibernate.SQL: debug
   #  org.hibernate.type: trace
   ```
+  <img width="428" alt="스크린샷 2022-05-25 오후 7 46 41" src="https://user-images.githubusercontent.com/94087228/170245190-3aabeaa3-de7d-4195-9c0f-540ff474f9d6.png">
+  
 ***
 
 ## application.yml - mysql
