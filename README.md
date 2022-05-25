@@ -60,9 +60,9 @@ tasks.named('test') {
 ```java
   spring:
     datasource:
-      url: jdbc:h2:tcp://localhost/~/localhost
+      url: jdbc:h2:tcp://localhost/~/DB이름
       username: sa
-      password:
+      password: 비밀번호
       driver-class-name: org.h2.Driver
     
     jpa:
