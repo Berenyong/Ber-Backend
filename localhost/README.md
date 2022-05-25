@@ -6,6 +6,7 @@
 #### EC2, RDS, Redis 등을 통한 자동 배포
 
 ## Oauth 2.0(구글, 네이버)
+Jwt 대신 Oauth 채택 -> 배보다 배꼽이 더 큼;
 
 ### 작업 환경
 - gradle
