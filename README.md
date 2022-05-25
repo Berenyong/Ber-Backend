@@ -106,3 +106,5 @@ logging.level:
   org.hibernate.type: trace
   # parameter Binding
 ```
+<img width="542" alt="스크린샷 2022-05-25 오후 7 41 54" src="https://user-images.githubusercontent.com/94087228/170244276-d81f91ad-09a9-47c8-baba-df8d74520d41.png">
+
