@@ -85,9 +85,9 @@ tasks.named('test') {
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306//localhost?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:포트번호//DB이름?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
     username: root
-    password:
+    password: 비밀번호
 
 
   jpa:
