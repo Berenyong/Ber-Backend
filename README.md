@@ -53,3 +53,28 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 ```
+
+***
+
+## application.yml
+```  H2
+  spring:
+    datasource:
+      url: jdbc:h2:tcp://localhost/~/localhost
+      username: sa
+      password:
+      driver-class-name: org.h2.Driver
+    
+    jpa:
+      hibernate:
+        ddl-auto: create-drop
+      properties:
+        hibernate:
+          show_sql: true
+          format_sql: true
+          default_batch_fetch_size: 1000
+  
+  logging.level:
+    org.hibernate.SQL: debug
+  #  org.hibernate.type: trace
+  ```
