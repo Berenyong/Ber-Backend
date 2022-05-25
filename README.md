@@ -8,8 +8,7 @@
 - intelliJ
 - h2
 - mysql -> RDS
-- yml + properties(security)
-- 
+- yml(DB, JPA, thread) + properties(Security)
 ***
 
 ### build.gradle
