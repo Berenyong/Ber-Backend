@@ -6,7 +6,8 @@
 - Spring Data Jpa
 - JDK11
 - intelliJ
-- mysql
+- h2
+- mysql -> RDS
 
 ***
 
