@@ -13,7 +13,7 @@ Jwt 대신 Oauth 채택 -> 배보다 배꼽이 더 큼;
 - Spring Data Jpa
 - JDK11
 - intelliJ
-- mysql
+- mysql -> 운영시 RDS mysql 사용
 
 ## 구글 Oauth
 - https://console.cloud.google.com/welcome?project=localhost-master
