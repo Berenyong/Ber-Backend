@@ -12,6 +12,7 @@ public class FreePostsCreateResponseDto {
     private String title;
     private String content;
 
+    @Builder
     public FreePostsCreateResponseDto(FreePosts freePosts) {
         this.id = freePosts.getId();
         this.title = freePosts.getTitle();

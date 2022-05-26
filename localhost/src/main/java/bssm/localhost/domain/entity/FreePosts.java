@@ -27,4 +27,9 @@ public class FreePosts extends BaseTimeEntity {
 
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    private User user;
+
+    public void update(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
 }
