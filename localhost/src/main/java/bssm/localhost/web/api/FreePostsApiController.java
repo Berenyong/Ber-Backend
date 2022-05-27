@@ -1,5 +1,6 @@
 package bssm.localhost.web.api;
 
+import bssm.localhost.service.FreePostsService;
 import bssm.localhost.service.FreePostsServiceImpl;
 import bssm.localhost.web.dto.FreePostsCreateRequestDto;
 import bssm.localhost.web.dto.FreePostsCreateResponseDto;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class FreePostsApiController {
 
-    private final FreePostsServiceImpl freePostsService;
+    private final FreePostsService freePostsService;
 
     @PostMapping("/create")
     public Long createPost(@RequestBody FreePostsCreateRequestDto freePostsCreateRequestDto){
@@ -24,7 +25,7 @@ public class FreePostsApiController {
         return new Result(freePostsService.findByTitle(title));
     }
 
-    @GetMapping("/{id")
+    @GetMapping("/{id}")
     public FreePostsCreateResponseDto detailPosts(@PathVariable Long id) {
         return freePostsService.detail(id);
     }
