@@ -1,7 +1,6 @@
 package bssm.localhost.web.api;
 
 import bssm.localhost.service.FreePostsService;
-import bssm.localhost.service.FreePostsServiceImpl;
 import bssm.localhost.web.dto.FreePostsCreateRequestDto;
 import bssm.localhost.web.dto.FreePostsCreateResponseDto;
 import bssm.localhost.web.generic.Result;
@@ -25,20 +24,18 @@ public class FreePostsApiController {
         return new Result(freePostsService.findByTitle(title));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/find/{id}")
     public FreePostsCreateResponseDto detailPosts(@PathVariable Long id) {
         return freePostsService.detail(id);
     }
 
-    @PutMapping("/{id}/edit")
-    public void updatePosts(@PathVariable Long id,
-                            @RequestBody FreePostsCreateRequestDto request) {
-
-        freePostsService.update(id, request);
+    @PutMapping("/update/{id}")
+    public Long updatePosts(@PathVariable Long id, @RequestBody FreePostsCreateRequestDto request) {
+        return freePostsService.update(id, request);
     }
 
-    @DeleteMapping("/{id}")
-    public void deletePosts(@PathVariable Long id) {
-        freePostsService.delete(id);
+    @DeleteMapping("/delete/{id}")
+    public Long deletePosts(@PathVariable Long id) {
+        return freePostsService.delete(id);
     }
 }

@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -44,17 +45,23 @@ public class FreePostsServiceImpl implements FreePostsService{
 
     @Transactional
     @Override
-    public void update(Long id, FreePostsCreateRequestDto request) {
+    public Long update(Long id, FreePostsCreateRequestDto request) {
         FreePosts freePosts = freePostsRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("존재하지 않는 게시글입니다."));
 
         freePosts.update(request.getTitle(), request.getContent());
 
+        return freePosts.getId();
     }
 
     @Transactional
     @Override
-    public void delete(Long id) {
+    public Long delete(Long id) {
+        Optional<FreePosts> byId = freePostsRepository.findById(id);
+        FreePosts freePosts = byId.get();
+
         freePostsRepository.deleteById(id);
+
+        return freePosts.getId();
     }
 }

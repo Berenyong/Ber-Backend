@@ -13,7 +13,7 @@ public interface FreePostsService {
 
     FreePostsCreateResponseDto detail(Long id);
 
-    void update(Long id, FreePostsCreateRequestDto request);
+    Long update(Long id, FreePostsCreateRequestDto request);
 
-    void delete(Long id);
+    Long delete(Long id);
 }
