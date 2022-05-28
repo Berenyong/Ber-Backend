@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -31,6 +32,21 @@ public class FreePostsServiceImpl implements FreePostsService{
         return freePostsRepository.findByTitle(title).stream()
                 .map(FreePostsCreateResponseDto::new)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<FreePostsCreateResponseDto> all() {
+        List<FreePosts> all = freePostsRepository.findAll();
+        List<FreePostsCreateResponseDto> response = new ArrayList<>();
+        for(FreePosts freePosts : all) {
+            FreePostsCreateResponseDto dto = FreePostsCreateResponseDto.builder()
+                    .freePosts(freePosts)
+                    .build();
+
+            response.add(dto);
+        }
+
+        return response;
     }
 
     @Override

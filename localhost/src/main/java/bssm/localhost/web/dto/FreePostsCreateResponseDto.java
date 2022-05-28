@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 
 @Getter
+@AllArgsConstructor
 public class FreePostsCreateResponseDto {
 
     private Long id;
@@ -18,4 +19,5 @@ public class FreePostsCreateResponseDto {
         this.title = freePosts.getTitle();
         this.content = freePosts.getContent();
     }
+
 }

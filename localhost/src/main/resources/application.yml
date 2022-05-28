@@ -1,23 +1,60 @@
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/son?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
-    username: root
-    password: chldnjsdyd1@
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:tcp://localhost/~/test
+    username: sa
+    password:
 
 
   jpa:
-    database: mysql
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-    generate-ddl: true
+    properties:
+      hibernate:
+        format_sql: true
+        user_sql_comments: true
+
     hibernate:
-      ddl-auto: update
-    show_sql: true
-    format_sql: true
+      ddl-auto: create
 
-#    default_batch_fetch_size: 1000
+logging:
+  level:
+    org:
+      apache:
+        coyote:
+          http11: debug
 
-logging.level:
-  org.hibernate.SQL: debug
-  org.hibernate.type: trace
-  # parameter Binding
+      hiberante:
+        SQL: debug
+
+
+
+
+
+
+
+
+
+
+
+#spring:
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/son?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+#    username: root
+#    password: chldnjsdyd1@
+#
+#
+#  jpa:
+#    database: mysql
+#    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+#    generate-ddl: true
+#    hibernate:
+#      ddl-auto: update
+#    show_sql: true
+#    format_sql: true
+#
+##    default_batch_fetch_size: 1000
+#
+#logging.level:
+#  org.hibernate.SQL: debug
+#  org.hibernate.type: trace
+#  # parameter Binding

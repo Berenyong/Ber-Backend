@@ -11,6 +11,8 @@ public interface FreePostsService {
 
     List<FreePostsCreateResponseDto> findByTitle(String title);
 
+    List<FreePostsCreateResponseDto> all();
+
     FreePostsCreateResponseDto detail(Long id);
 
     Long update(Long id, FreePostsCreateRequestDto request);
