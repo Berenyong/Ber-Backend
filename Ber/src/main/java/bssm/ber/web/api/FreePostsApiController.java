@@ -24,22 +24,12 @@ public class FreePostsApiController {
 
     @GetMapping("/find/title/{title}")
     public Result findByTitle(@PathVariable String title){
-        List<FreePostsCreateResponseDto> byTitle = freePostsService.findByTitle(title);
-        List<FreePostsCreateResponseDto> collect = byTitle.stream()
-                .map(p -> new FreePostsCreateResponseDto(p.getId(), p.getTitle(), p.getContent()))
-                .collect(Collectors.toList());
-
-        return new Result(collect);
+        return new Result(freePostsService.findByTitle(title));
     }
 
     @GetMapping("/findAll")
     public Result allPosts() {
-        List<FreePostsCreateResponseDto> all = freePostsService.all();
-        List<FreePostsCreateResponseDto> collect = all.stream()
-                .map(p -> new FreePostsCreateResponseDto(p.getId(), p.getTitle(), p.getContent()))
-                .collect(Collectors.toList());
-
-        return new Result(collect);
+        return new Result(freePostsService.all());
     }
 
     @GetMapping("/find/{id}")
