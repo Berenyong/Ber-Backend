@@ -57,7 +57,6 @@ public class FreePostsServiceImpl implements FreePostsService{
                 .orElseThrow(() -> new NoSuchElementException("존재하지 않는 게시글입니다."));
 
         freePosts.update(request.getTitle(), request.getContent());
-
         return freePosts.getId();
     }
 
@@ -68,7 +67,6 @@ public class FreePostsServiceImpl implements FreePostsService{
         FreePosts freePosts = byId.get();
 
         freePostsRepository.deleteById(id);
-
         return freePosts.getId();
     }
 }
