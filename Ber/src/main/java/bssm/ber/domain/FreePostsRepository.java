@@ -1,6 +1,6 @@
-package bssm.localhost.domain;
+package bssm.ber.domain;
 
-import bssm.localhost.domain.entity.FreePosts;
+import bssm.ber.domain.entity.FreePosts;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

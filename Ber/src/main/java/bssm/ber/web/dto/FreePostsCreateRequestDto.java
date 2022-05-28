@@ -1,6 +1,6 @@
-package bssm.localhost.web.dto;
+package bssm.ber.web.dto;
 
-import bssm.localhost.domain.entity.FreePosts;
+import bssm.ber.domain.entity.FreePosts;
 import lombok.*;
 
 @Getter

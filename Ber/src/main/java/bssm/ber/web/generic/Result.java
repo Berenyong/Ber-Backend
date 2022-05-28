@@ -1,4 +1,4 @@
-package bssm.localhost.web.generic;
+package bssm.ber.web.generic;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

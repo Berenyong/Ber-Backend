@@ -1,9 +1,9 @@
-package bssm.localhost.web.api;
+package bssm.ber.web.api;
 
-import bssm.localhost.service.FreePostsService;
-import bssm.localhost.web.dto.FreePostsCreateRequestDto;
-import bssm.localhost.web.dto.FreePostsCreateResponseDto;
-import bssm.localhost.web.generic.Result;
+import bssm.ber.service.FreePostsService;
+import bssm.ber.web.dto.FreePostsCreateRequestDto;
+import bssm.ber.web.dto.FreePostsCreateResponseDto;
+import bssm.ber.web.generic.Result;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

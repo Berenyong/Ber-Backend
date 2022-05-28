@@ -1,6 +1,6 @@
-package bssm.localhost.domain.entity;
+package bssm.ber.domain.entity;
 
-import bssm.localhost.domain.BaseTimeEntity;
+import bssm.ber.domain.BaseTimeEntity;
 import lombok.*;
 
 import javax.persistence.*;

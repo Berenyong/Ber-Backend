@@ -1,7 +1,7 @@
-package bssm.localhost.service;
+package bssm.ber.service;
 
-import bssm.localhost.web.dto.FreePostsCreateRequestDto;
-import bssm.localhost.web.dto.FreePostsCreateResponseDto;
+import bssm.ber.web.dto.FreePostsCreateRequestDto;
+import bssm.ber.web.dto.FreePostsCreateResponseDto;
 
 import java.util.List;
 

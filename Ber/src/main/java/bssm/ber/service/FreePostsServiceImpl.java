@@ -1,9 +1,9 @@
-package bssm.localhost.service;
+package bssm.ber.service;
 
-import bssm.localhost.domain.FreePostsRepository;
-import bssm.localhost.domain.entity.FreePosts;
-import bssm.localhost.web.dto.FreePostsCreateRequestDto;
-import bssm.localhost.web.dto.FreePostsCreateResponseDto;
+import bssm.ber.domain.FreePostsRepository;
+import bssm.ber.domain.entity.FreePosts;
+import bssm.ber.web.dto.FreePostsCreateRequestDto;
+import bssm.ber.web.dto.FreePostsCreateResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

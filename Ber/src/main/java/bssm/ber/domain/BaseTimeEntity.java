@@ -1,4 +1,4 @@
-package bssm.localhost.domain;
+package bssm.ber.domain;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
