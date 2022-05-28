@@ -33,7 +33,7 @@ public class FreePostsApiController {
         return new Result(collect);
     }
 
-    @GetMapping("/find")
+    @GetMapping("/findAll")
     public Result allPosts() {
         List<FreePostsCreateResponseDto> all = freePostsService.all();
         List<FreePostsCreateResponseDto> collect = all.stream()

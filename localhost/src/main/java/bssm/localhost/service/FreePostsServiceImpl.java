@@ -36,17 +36,9 @@ public class FreePostsServiceImpl implements FreePostsService{
 
     @Override
     public List<FreePostsCreateResponseDto> all() {
-        List<FreePosts> all = freePostsRepository.findAll();
-        List<FreePostsCreateResponseDto> response = new ArrayList<>();
-        for(FreePosts freePosts : all) {
-            FreePostsCreateResponseDto dto = FreePostsCreateResponseDto.builder()
-                    .freePosts(freePosts)
-                    .build();
-
-            response.add(dto);
-        }
-
-        return response;
+        return freePostsRepository.findAll().stream()
+                .map(FreePostsCreateResponseDto::new)
+                .collect(Collectors.toList());
     }
 
     @Override
