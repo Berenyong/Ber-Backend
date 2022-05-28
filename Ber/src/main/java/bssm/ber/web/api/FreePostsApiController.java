@@ -1,14 +1,11 @@
 package bssm.ber.web.api;
 
 import bssm.ber.service.FreePostsService;
-import bssm.ber.web.dto.FreePostsCreateRequestDto;
-import bssm.ber.web.dto.FreePostsCreateResponseDto;
+import bssm.ber.web.dto.posts.FreePostsCreateRequestDto;
+import bssm.ber.web.dto.posts.FreePostsCreateResponseDto;
 import bssm.ber.web.generic.Result;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @RequestMapping("/ber/api/posts/free")
 @RequiredArgsConstructor

@@ -1,9 +1,10 @@
-package bssm.ber.service;
+package bssm.ber.service.impl;
 
-import bssm.ber.domain.FreePostsRepository;
-import bssm.ber.domain.entity.FreePosts;
-import bssm.ber.web.dto.FreePostsCreateRequestDto;
-import bssm.ber.web.dto.FreePostsCreateResponseDto;
+import bssm.ber.domain.entity.posts.repository.FreePostsRepository;
+import bssm.ber.domain.entity.posts.FreePosts;
+import bssm.ber.service.FreePostsService;
+import bssm.ber.web.dto.posts.FreePostsCreateRequestDto;
+import bssm.ber.web.dto.posts.FreePostsCreateResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,7 +17,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 @Service
-public class FreePostsServiceImpl implements FreePostsService{
+public class FreePostsServiceImpl implements FreePostsService {
 
     private final FreePostsRepository freePostsRepository;
 

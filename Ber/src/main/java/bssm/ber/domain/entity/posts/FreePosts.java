@@ -1,4 +1,4 @@
-package bssm.ber.domain.entity;
+package bssm.ber.domain.entity.posts;
 
 import bssm.ber.domain.BaseTimeEntity;
 import lombok.*;
