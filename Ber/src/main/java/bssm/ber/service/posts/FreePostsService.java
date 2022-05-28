@@ -1,7 +1,7 @@
-package bssm.ber.service;
+package bssm.ber.service.posts;
 
 import bssm.ber.web.dto.posts.FreePostsCreateRequestDto;
-import bssm.ber.web.dto.posts.FreePostsCreateResponseDto;
+import bssm.ber.web.dto.posts.FreePostsResponseDto;
 
 import java.util.List;
 
@@ -9,11 +9,11 @@ public interface FreePostsService {
 
     Long create(FreePostsCreateRequestDto request);
 
-    List<FreePostsCreateResponseDto> findByTitle(String title);
+    List<FreePostsResponseDto> findByTitle(String title);
 
-    List<FreePostsCreateResponseDto> all();
+    List<FreePostsResponseDto> all();
 
-    FreePostsCreateResponseDto detail(Long id);
+    FreePostsResponseDto detail(Long id);
 
     Long update(Long id, FreePostsCreateRequestDto request);
 

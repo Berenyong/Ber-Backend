@@ -1,10 +1,10 @@
-package bssm.ber.service.impl;
+package bssm.ber.service.posts.impl;
 
 import bssm.ber.domain.entity.posts.ManagerPosts;
 import bssm.ber.domain.entity.posts.repository.ManagerPostsRepository;
-import bssm.ber.service.ManagerPostsService;
+import bssm.ber.service.posts.ManagerPostsService;
 import bssm.ber.web.dto.posts.ManagerPostsCreateRequestDto;
-import bssm.ber.web.dto.posts.ManagerPostsCreateResponseDto;
+import bssm.ber.web.dto.posts.ManagerPostsResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,25 +28,25 @@ public class ManagerPostsServiceImpl implements ManagerPostsService {
     }
 
     @Override
-    public List<ManagerPostsCreateResponseDto> findByTitle(String title){
+    public List<ManagerPostsResponseDto> findByTitle(String title){
         return managerPostsRepository.findByTitle(title).stream()
-                .map(ManagerPostsCreateResponseDto::new)
+                .map(ManagerPostsResponseDto::new)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<ManagerPostsCreateResponseDto> all() {
+    public List<ManagerPostsResponseDto> all() {
         return managerPostsRepository.findAll().stream()
-                .map(ManagerPostsCreateResponseDto::new)
+                .map(ManagerPostsResponseDto::new)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public ManagerPostsCreateResponseDto findById(Long id) {
+    public ManagerPostsResponseDto findById(Long id) {
         ManagerPosts managerPosts = managerPostsRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("존재하지 않는 게시글입니다."));
 
-        return ManagerPostsCreateResponseDto.builder()
+        return ManagerPostsResponseDto.builder()
                 .managerPosts(managerPosts)
                 .build();
     }

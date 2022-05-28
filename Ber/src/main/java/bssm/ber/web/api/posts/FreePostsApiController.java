@@ -1,8 +1,8 @@
-package bssm.ber.web.api;
+package bssm.ber.web.api.posts;
 
-import bssm.ber.service.FreePostsService;
+import bssm.ber.service.posts.FreePostsService;
 import bssm.ber.web.dto.posts.FreePostsCreateRequestDto;
-import bssm.ber.web.dto.posts.FreePostsCreateResponseDto;
+import bssm.ber.web.dto.posts.FreePostsResponseDto;
 import bssm.ber.web.generic.Result;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +30,7 @@ public class FreePostsApiController {
     }
 
     @GetMapping("/find/{id}")
-    public FreePostsCreateResponseDto detailPosts(@PathVariable Long id) {
+    public FreePostsResponseDto detailPosts(@PathVariable Long id) {
         return freePostsService.detail(id);
     }
 

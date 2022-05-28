@@ -1,8 +1,8 @@
-package bssm.ber.web.api;
+package bssm.ber.web.api.posts;
 
-import bssm.ber.service.ManagerPostsService;
+import bssm.ber.service.posts.ManagerPostsService;
 import bssm.ber.web.dto.posts.ManagerPostsCreateRequestDto;
-import bssm.ber.web.dto.posts.ManagerPostsCreateResponseDto;
+import bssm.ber.web.dto.posts.ManagerPostsResponseDto;
 import bssm.ber.web.generic.Result;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +30,7 @@ public class ManagerPostsApiController {
     }
 
     @GetMapping("/find/{id}")
-    public ManagerPostsCreateResponseDto findById(@PathVariable Long id) {
+    public ManagerPostsResponseDto findById(@PathVariable Long id) {
         return managerPostsService.findById(id);
     }
 

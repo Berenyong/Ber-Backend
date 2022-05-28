@@ -1,8 +1,8 @@
-package bssm.ber.web.api;
+package bssm.ber.web.api.posts;
 
-import bssm.ber.service.MajorPostsService;
+import bssm.ber.service.posts.MajorPostsService;
 import bssm.ber.web.dto.posts.MajorPostsCreateRequestDto;
-import bssm.ber.web.dto.posts.MajorPostsCreateResponseDto;
+import bssm.ber.web.dto.posts.MajorPostsResponseDto;
 import bssm.ber.web.generic.Result;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +30,7 @@ public class MajorPostsApiController {
     }
 
     @GetMapping("/find/{id}")
-    public MajorPostsCreateResponseDto detailPosts(@PathVariable Long id) {
+    public MajorPostsResponseDto detailPosts(@PathVariable Long id) {
         return majorPostsService.detail(id);
     }
 

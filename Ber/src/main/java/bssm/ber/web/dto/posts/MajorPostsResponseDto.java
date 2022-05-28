@@ -7,14 +7,14 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class MajorPostsCreateResponseDto {
+public class MajorPostsResponseDto {
 
     private Long id;
     private String title;
     private String content;
 
     @Builder
-    public MajorPostsCreateResponseDto(MajorPosts majorPosts) {
+    public MajorPostsResponseDto(MajorPosts majorPosts) {
         this.id = majorPosts.getId();
         this.title = majorPosts.getTitle();
         this.content = majorPosts.getContent();

@@ -1,18 +1,18 @@
-package bssm.ber.service;
+package bssm.ber.service.posts;
 
 import bssm.ber.web.dto.posts.ManagerPostsCreateRequestDto;
-import bssm.ber.web.dto.posts.ManagerPostsCreateResponseDto;
+import bssm.ber.web.dto.posts.ManagerPostsResponseDto;
 
 import java.util.List;
 
 public interface ManagerPostsService {
     Long create(ManagerPostsCreateRequestDto request);
 
-    List<ManagerPostsCreateResponseDto> findByTitle(String title);
+    List<ManagerPostsResponseDto> findByTitle(String title);
 
-    List<ManagerPostsCreateResponseDto> all();
+    List<ManagerPostsResponseDto> all();
 
-    ManagerPostsCreateResponseDto findById(Long id);
+    ManagerPostsResponseDto findById(Long id);
 
     Long update(Long id, ManagerPostsCreateRequestDto request);
 

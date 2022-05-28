@@ -1,10 +1,10 @@
-package bssm.ber.service.impl;
+package bssm.ber.service.posts.impl;
 
 import bssm.ber.domain.entity.posts.MajorPosts;
 import bssm.ber.domain.entity.posts.repository.MajorPostsRepository;
-import bssm.ber.service.MajorPostsService;
+import bssm.ber.service.posts.MajorPostsService;
 import bssm.ber.web.dto.posts.MajorPostsCreateRequestDto;
-import bssm.ber.web.dto.posts.MajorPostsCreateResponseDto;
+import bssm.ber.web.dto.posts.MajorPostsResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,25 +28,25 @@ public class MajorPostsServiceImpl implements MajorPostsService {
     }
 
     @Override
-    public List<MajorPostsCreateResponseDto> findByTitle(String title){
+    public List<MajorPostsResponseDto> findByTitle(String title){
         return majorPostsRepository.findByTitle(title).stream()
-                .map(MajorPostsCreateResponseDto::new)
+                .map(MajorPostsResponseDto::new)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<MajorPostsCreateResponseDto> all() {
+    public List<MajorPostsResponseDto> all() {
         return majorPostsRepository.findAll().stream()
-                .map(MajorPostsCreateResponseDto::new)
+                .map(MajorPostsResponseDto::new)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public MajorPostsCreateResponseDto detail(Long id) {
+    public MajorPostsResponseDto detail(Long id) {
         MajorPosts majorPosts = majorPostsRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("존재하지 않는 게시글입니다."));
 
-        return MajorPostsCreateResponseDto.builder()
+        return MajorPostsResponseDto.builder()
                 .majorPosts(majorPosts)
                 .build();
     }

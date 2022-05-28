@@ -10,6 +10,6 @@ import java.util.List;
 
 public interface ManagerPostsRepository extends JpaRepository<ManagerPosts, Long> {
 
-    @Query("select f from FreePosts f where f.title = :title")
+    @Query("select m from ManagerPosts m where m.title = :title")
     List<ManagerPosts> findByTitle(@Param("title") String title);
 }

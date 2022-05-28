@@ -1,10 +1,10 @@
-package bssm.ber.service.impl;
+package bssm.ber.service.posts.impl;
 
 import bssm.ber.domain.entity.posts.repository.FreePostsRepository;
 import bssm.ber.domain.entity.posts.FreePosts;
-import bssm.ber.service.FreePostsService;
+import bssm.ber.service.posts.FreePostsService;
 import bssm.ber.web.dto.posts.FreePostsCreateRequestDto;
-import bssm.ber.web.dto.posts.FreePostsCreateResponseDto;
+import bssm.ber.web.dto.posts.FreePostsResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,25 +28,25 @@ public class FreePostsServiceImpl implements FreePostsService {
     }
 
     @Override
-    public List<FreePostsCreateResponseDto> findByTitle(String title){
+    public List<FreePostsResponseDto> findByTitle(String title){
         return freePostsRepository.findByTitle(title).stream()
-                .map(FreePostsCreateResponseDto::new)
+                .map(FreePostsResponseDto::new)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<FreePostsCreateResponseDto> all() {
+    public List<FreePostsResponseDto> all() {
         return freePostsRepository.findAll().stream()
-                .map(FreePostsCreateResponseDto::new)
+                .map(FreePostsResponseDto::new)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public FreePostsCreateResponseDto detail(Long id) {
+    public FreePostsResponseDto detail(Long id) {
         FreePosts freePosts = freePostsRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("존재하지 않는 게시글입니다."));
 
-        return FreePostsCreateResponseDto.builder()
+        return FreePostsResponseDto.builder()
                 .freePosts(freePosts)
                 .build();
     }

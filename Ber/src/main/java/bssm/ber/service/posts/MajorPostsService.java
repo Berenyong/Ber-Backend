@@ -1,7 +1,7 @@
-package bssm.ber.service;
+package bssm.ber.service.posts;
 
 import bssm.ber.web.dto.posts.MajorPostsCreateRequestDto;
-import bssm.ber.web.dto.posts.MajorPostsCreateResponseDto;
+import bssm.ber.web.dto.posts.MajorPostsResponseDto;
 
 import java.util.List;
 
@@ -9,11 +9,11 @@ public interface MajorPostsService {
 
     Long create(MajorPostsCreateRequestDto request);
 
-    List<MajorPostsCreateResponseDto> findByTitle(String title);
+    List<MajorPostsResponseDto> findByTitle(String title);
 
-    List<MajorPostsCreateResponseDto> all();
+    List<MajorPostsResponseDto> all();
 
-    MajorPostsCreateResponseDto detail(Long id);
+    MajorPostsResponseDto detail(Long id);
 
     Long update(Long id, MajorPostsCreateRequestDto request);
 
