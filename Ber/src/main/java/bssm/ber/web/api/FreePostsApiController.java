@@ -7,6 +7,9 @@ import bssm.ber.web.generic.Result;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RequestMapping("/ber/api/posts/free")
 @RequiredArgsConstructor
 @RestController
@@ -22,6 +25,11 @@ public class FreePostsApiController {
     @GetMapping("/find/title/{title}")
     public Result findByTitle(@PathVariable String title){
         return new Result(freePostsService.findByTitle(title));
+    }
+
+    @GetMapping("/findAll")
+    public Result allPosts() {
+        return new Result(freePostsService.all());
     }
 
     @GetMapping("/find/{id}")
