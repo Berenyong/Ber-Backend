@@ -34,6 +34,13 @@ public class FreePostsServiceImpl implements FreePostsService{
     }
 
     @Override
+    public List<FreePostsCreateResponseDto> all() {
+        return freePostsRepository.findAll().stream()
+                .map(FreePostsCreateResponseDto::new)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public FreePostsCreateResponseDto detail(Long id) {
         FreePosts freePosts = freePostsRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("존재하지 않는 게시글입니다."));
