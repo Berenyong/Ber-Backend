@@ -2,6 +2,7 @@ package bssm.ber.service.users.impl;
 
 import bssm.ber.domain.entity.users.Users;
 import bssm.ber.domain.entity.users.UsersRepository;
+import bssm.ber.security.jwt.JwtTokenProvider;
 import bssm.ber.service.users.UsersService;
 import bssm.ber.web.dto.users.UsersJoinRequestDto;
 import bssm.ber.web.dto.users.UsersResponseDto;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -19,6 +21,7 @@ import java.util.stream.Collectors;
 public class UsersServiceImpl implements UsersService {
 
     private final UsersRepository usersRepository;
+    private final JwtTokenProvider jwtTokenProvider;
 
     @Transactional
     @Override
@@ -51,5 +54,15 @@ public class UsersServiceImpl implements UsersService {
         usersRepository.deleteById(id);
 
         return byId.get().getId();
+    }
+
+    public String login(Map<String, String> users) {
+        Optional<Users> user = Optional.ofNullable(usersRepository.findByEmail(users.get("email"))
+                .orElseThrow(() -> new IllegalArgumentException("가입되지 않은 Email입니다.")));
+        Users findUser = user.get();
+        if (!users.get("password").equals(findUser.getPassword())){
+            throw new IllegalArgumentException("잘못된 비밀번호입니다.");
+        }
+        return jwtTokenProvider.createToken(findUser.getUsername(), findUser.getRoles());
     }
 }

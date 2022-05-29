@@ -5,17 +5,23 @@ import bssm.ber.domain.entity.users.Users;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
+import java.util.Collections;
+import java.util.List;
 
 @Getter
 @AllArgsConstructor
 @Builder
+@RequiredArgsConstructor
 public class UsersJoinRequestDto {
 
     private String email;
     private String nickname;
     private int age;
     private String password;
-    private Role role;
+
+    private List<String> roles;
 
     public Users toEntity(){
         return Users.builder()
@@ -23,7 +29,7 @@ public class UsersJoinRequestDto {
                 .nickname(nickname)
                 .age(age)
                 .password(password)
-                .role(Role.USER)
+                .roles(Collections.singletonList("ROLE_USER"))
                 .build();
     }
 }

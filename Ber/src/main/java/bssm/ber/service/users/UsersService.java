@@ -4,6 +4,7 @@ import bssm.ber.web.dto.users.UsersJoinRequestDto;
 import bssm.ber.web.dto.users.UsersResponseDto;
 
 import java.util.List;
+import java.util.Map;
 
 public interface UsersService {
 
@@ -14,4 +15,6 @@ public interface UsersService {
     List<UsersResponseDto> findUsers(String nickname);
 
     Long delete(Long id);
+
+    String login(Map<String, String> users);
 }

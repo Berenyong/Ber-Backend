@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
+import java.util.List;
+
 @Getter
 @AllArgsConstructor
 public class UsersResponseDto {
@@ -15,7 +17,7 @@ public class UsersResponseDto {
     private String nickname;
     private int age;
     private String password;
-    private Role role;
+    private List<String> roles;
 
     @Builder
     public UsersResponseDto(Users users) {
@@ -24,7 +26,7 @@ public class UsersResponseDto {
         this.nickname = users.getNickname();
         this.age = users.getAge();
         this.password = users.getPassword();
-        this.role = users.getRole();
+        this.roles = users.getRoles();
     }
 
 }

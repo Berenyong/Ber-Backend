@@ -43,4 +43,6 @@ public class FreePostsApiController {
     public Long deletePosts(@PathVariable Long id) {
         return freePostsService.delete(id);
     }
+
+
 }

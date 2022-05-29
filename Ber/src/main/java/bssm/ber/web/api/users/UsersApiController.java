@@ -1,11 +1,14 @@
 package bssm.ber.web.api.users;
 
+import bssm.ber.domain.entity.users.Users;
 import bssm.ber.service.users.UsersService;
 import bssm.ber.web.dto.users.UsersJoinRequestDto;
 import bssm.ber.web.dto.users.UsersResponseDto;
 import bssm.ber.web.generic.Result;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RequiredArgsConstructor
 @RestController
@@ -34,4 +37,9 @@ public class UsersApiController {
         return usersService.delete(id);
     }
 
+    // 로그인
+    @PostMapping("/login")
+    public String login(@RequestBody Map<String, String> users) {
+        return usersService.login(users);
+    }
 }
