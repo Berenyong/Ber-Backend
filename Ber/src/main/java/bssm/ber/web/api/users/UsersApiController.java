@@ -39,7 +39,7 @@ public class UsersApiController {
 
     // 로그인
     @PostMapping("/login")
-    public String login(@RequestBody Map<String, String> users) {
-        return usersService.login(users);
+    public String login(@RequestBody UsersJoinRequestDto request) {
+        return usersService.login(request);
     }
 }

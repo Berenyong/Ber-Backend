@@ -16,5 +16,5 @@ public interface UsersService {
 
     Long delete(Long id);
 
-    String login(Map<String, String> users);
+    String login(UsersJoinRequestDto request);
 }
