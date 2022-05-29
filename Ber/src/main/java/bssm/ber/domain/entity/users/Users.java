@@ -34,7 +34,6 @@ public class Users extends BaseTimeEntity implements UserDetails {
     @Column(length = 100)
     private String password;
 
-
     @ElementCollection(fetch = FetchType.EAGER)
     @Builder.Default
     private List<String> roles = new ArrayList<>();

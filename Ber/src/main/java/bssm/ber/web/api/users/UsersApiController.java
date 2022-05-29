@@ -37,7 +37,6 @@ public class UsersApiController {
         return usersService.delete(id);
     }
 
-    // 로그인
     @PostMapping("/login")
     public String login(@RequestBody Map<String, String> users) {
         return usersService.login(users);
