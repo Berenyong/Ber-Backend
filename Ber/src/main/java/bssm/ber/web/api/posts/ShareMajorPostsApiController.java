@@ -44,5 +44,3 @@ public class ShareMajorPostsApiController {
         return shareMajorPostsService.delete(id);
     }
 }
-
-

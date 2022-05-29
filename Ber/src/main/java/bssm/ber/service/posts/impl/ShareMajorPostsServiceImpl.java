@@ -41,6 +41,15 @@ public class ShareMajorPostsServiceImpl implements ShareMajorPostsService {
                 .collect(Collectors.toList());
     }
 
+//    @Override
+//    public List<ShareMajorPostsResponseDto> all() {
+//        return shareMajorPostsRepository.findAll().stream()
+//                .filter(shareMajorPosts -> shareMajorPosts.getTitle().equals("title")
+//                        && shareMajorPosts.getContent().equals("content"))
+//                .map(ShareMajorPostsResponseDto::new)
+//                .collect(Collectors.toList());
+//    }
+
     @Override
     public ShareMajorPostsResponseDto detail(Long id) {
         ShareMajorPosts shareMajorPosts = shareMajorPostsRepository.findById(id)
