@@ -8,6 +8,7 @@ import bssm.ber.web.generic.Result;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Map;
 
 @RequiredArgsConstructor
@@ -18,7 +19,7 @@ public class UsersApiController {
     private final UsersService usersService;
 
     @PostMapping("/join")
-    public Long joinUser(@RequestBody UsersJoinRequestDto usersJoinRequestDto){
+    public Long joinUser(@RequestBody @Valid UsersJoinRequestDto usersJoinRequestDto){
         return usersService.join(usersJoinRequestDto);
     }
 
