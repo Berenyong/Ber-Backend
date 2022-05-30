@@ -1,6 +1,5 @@
 package bssm.ber.security.jwt;
 
-import bssm.ber.domain.entity.users.Role;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
