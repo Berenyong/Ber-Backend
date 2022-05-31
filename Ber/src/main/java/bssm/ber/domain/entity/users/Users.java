@@ -1,6 +1,10 @@
 package bssm.ber.domain.entity.users;
 
 import bssm.ber.domain.BaseTimeEntity;
+import bssm.ber.domain.entity.posts.FreePosts;
+import bssm.ber.domain.entity.posts.MajorPosts;
+import bssm.ber.domain.entity.posts.ManagerPosts;
+import bssm.ber.domain.entity.posts.ShareMajorPosts;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -43,6 +47,18 @@ public class Users extends BaseTimeEntity implements UserDetails {
 
     @Column(length = 1000)
     private String blogLink;
+
+    @OneToMany(mappedBy = "user")
+    private List<FreePosts> freePosts;
+
+    @OneToMany(mappedBy = "user")
+    private List<MajorPosts> majorPosts;
+
+    @OneToMany(mappedBy = "user")
+    private List<ManagerPosts> managerPosts;
+
+    @OneToMany(mappedBy = "user")
+    private List<ShareMajorPosts> shareMajorPosts;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

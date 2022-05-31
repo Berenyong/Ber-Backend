@@ -1,6 +1,7 @@
 package bssm.ber.domain.entity.posts;
 
 import bssm.ber.domain.BaseTimeEntity;
+import bssm.ber.domain.entity.users.Users;
 import lombok.*;
 
 import javax.persistence.*;
@@ -25,8 +26,9 @@ public class FreePosts extends BaseTimeEntity {
     @Column(columnDefinition = "TEXT", length = 2000)
     private String content;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    private User user;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "users_id")
+    private Users user;
 
     public void update(String title, String content) {
         this.title = title;
