@@ -10,7 +10,7 @@
 - mysql -> RDS
 - yml(DB, JPA, thread) + properties(Security)
 
-- 도메인 단위 패키지 구조 -> 레이어 패키지 단위 구조 사용
+- domain 단위 패키지 구조 -> layer 단위 패키지 구조
 ***
 
 ### build.gradle
