@@ -88,17 +88,22 @@ tasks.named('test') {
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:포트번호/DB이름?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:3306/DB 이름?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
     username: root
     password: 비밀번호
 
+  security:
+    jwt:
+      header: Authorization
+      secret: c2lsdmVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQtc2lsdmVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQK
+      token-validity-in-seconds: 86400
 
   jpa:
     database: mysql
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     generate-ddl: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: create-drop
     show_sql: true
     format_sql: true
 
@@ -108,6 +113,7 @@ logging.level:
   org.hibernate.SQL: debug
   org.hibernate.type: trace
   # parameter Binding
+
 ```
 <div>
 <img width="198" alt="스크린샷 2022-05-25 오후 7 50 15" src="https://user-images.githubusercontent.com/94087228/170245775-89f07e9d-5fd8-4c31-ac28-8eb2e6103857.png"> 
