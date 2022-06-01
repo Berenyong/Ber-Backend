@@ -115,11 +115,6 @@ logging.level:
   # parameter Binding
 
 ```
-<div>
-<img width="198" alt="스크린샷 2022-05-25 오후 7 50 15" src="https://user-images.githubusercontent.com/94087228/170245775-89f07e9d-5fd8-4c31-ac28-8eb2e6103857.png"> 
-
-<img width="542" alt="스크린샷 2022-05-25 오후 7 41 54" src="https://user-images.githubusercontent.com/94087228/170244276-d81f91ad-09a9-47c8-baba-df8d74520d41.png">
-</div>
 
 ***
 
