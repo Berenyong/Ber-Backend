@@ -120,4 +120,3 @@ logging.level:
 
 ## ERD
 <img width="944" alt="Ber ERD" src="https://user-images.githubusercontent.com/94087228/170522336-0942284d-9390-4475-800a-4370e3d21136.png">
-
