@@ -3,7 +3,6 @@ package bssm.ber.service.posts.posts.impl;
 import bssm.ber.domain.entity.posts.posts.repository.FreePostsRepository;
 import bssm.ber.domain.entity.posts.posts.FreePosts;
 import bssm.ber.service.posts.posts.FreePostsService;
-import bssm.ber.web.dto.posts.posts.FreePostsCreateRequestDto;
 import bssm.ber.web.dto.posts.posts.request.FreePostsCreateRequestDto;
 import bssm.ber.web.dto.posts.posts.response.FreePostsResponseDto;
 import lombok.RequiredArgsConstructor;

@@ -1,6 +1,5 @@
 package bssm.ber.service.posts.posts;
 
-import bssm.ber.web.dto.posts.posts.FreePostsCreateRequestDto;
 import bssm.ber.web.dto.posts.posts.request.FreePostsCreateRequestDto;
 import bssm.ber.web.dto.posts.posts.response.FreePostsResponseDto;
 
