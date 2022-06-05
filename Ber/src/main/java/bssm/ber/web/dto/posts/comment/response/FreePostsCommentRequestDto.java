@@ -24,7 +24,8 @@ public class FreePostsCommentRequestDto {
             = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm"));
     private FreePosts freePosts;
 
-    /* Dto -> Entity */
+    // Dto -> Entity
+    // Users 값을 받아서 Entity 로 변환해야 합니다.
     public FreePostsComment toEntity() {
         return FreePostsComment.builder()
                 .id(id)

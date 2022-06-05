@@ -1,5 +1,6 @@
 package bssm.ber.service.users.impl;
 
+import bssm.ber.domain.entity.posts.comment.FreePostsComment;
 import bssm.ber.domain.entity.users.Users;
 import bssm.ber.domain.entity.users.UsersRepository;
 import bssm.ber.security.jwt.JwtTokenProvider;
@@ -10,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -63,6 +65,8 @@ public class UsersServiceImpl implements UsersService {
         if (!users.get("password").equals(findUser.getPassword())){
             throw new IllegalArgumentException("잘못된 비밀번호입니다.");
         }
+
         return jwtTokenProvider.createToken(findUser.getUsername(), findUser.getRoles());
     }
+
 }

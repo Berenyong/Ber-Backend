@@ -6,11 +6,14 @@ import bssm.ber.domain.entity.posts.comment.repository.FreePostsCommentRepositor
 import bssm.ber.domain.entity.posts.posts.repository.FreePostsRepository;
 import bssm.ber.service.posts.comment.FreePostsCommentService;
 import bssm.ber.web.dto.posts.comment.response.FreePostsCommentRequestDto;
+import bssm.ber.web.dto.posts.comment.response.FreePostsCommentResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -32,5 +35,13 @@ public class FreePostsCommentServiceImpl implements FreePostsCommentService {
         freePostsCommentRepository.save(freePostsComment);
 
         return requestDto.getId();
+    }
+
+    @Override
+    public List<FreePostsCommentResponseDto> findAllDesc() {
+        return freePostsCommentRepository.findAllDesc()
+                .stream()
+                .map(FreePostsCommentResponseDto::new)
+                .collect(Collectors.toList());
     }
 }
