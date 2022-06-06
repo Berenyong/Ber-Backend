@@ -1,7 +1,9 @@
-package bssm.ber.web.dto.posts.comment.response;
+package bssm.ber.web.dto.posts.comment.request;
 
-import bssm.ber.domain.entity.posts.comment.FreePostsComment;
-import bssm.ber.domain.entity.posts.posts.FreePosts;
+import bssm.ber.domain.entity.posts.comment.ManagerPostsComment;
+import bssm.ber.domain.entity.posts.comment.ShareMajorPostsComment;
+import bssm.ber.domain.entity.posts.posts.ManagerPosts;
+import bssm.ber.domain.entity.posts.posts.ShareMajorPosts;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,7 +16,7 @@ import java.time.format.DateTimeFormatter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class FreePostsCommentRequestDto {
+public class ShareMajorPostsCommentRequestDto {
 
     private Long id;
     private String comment;
@@ -22,17 +24,15 @@ public class FreePostsCommentRequestDto {
             = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm"));
     private String modifiedDate
             = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm"));
-    private FreePosts freePosts;
+    private ShareMajorPosts shareMajorPosts;
 
-    // Dto -> Entity
-    // Users 값을 받아서 Entity 로 변환해야 합니다.
-    public FreePostsComment toEntity() {
-        return FreePostsComment.builder()
+    public ShareMajorPostsComment toEntity() {
+        return ShareMajorPostsComment.builder()
                 .id(id)
                 .comment(comment)
                 .createdDate(createdDate)
                 .modifiedDate(modifiedDate)
-                .freePosts(freePosts)
+                .shareMajorPosts(shareMajorPosts)
                 .build();
     }
 }

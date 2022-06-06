@@ -1,6 +1,8 @@
 package bssm.ber.domain.entity.posts.posts;
 
 import bssm.ber.domain.BaseTimeEntity;
+import bssm.ber.domain.entity.posts.comment.FreePostsComment;
+import bssm.ber.domain.entity.posts.comment.MajorPostsComment;
 import lombok.*;
 
 import javax.persistence.*;
@@ -26,6 +28,10 @@ public class MajorPosts extends BaseTimeEntity {
     @NotNull
     @Column(columnDefinition = "TEXT", length = 2000)
     private String content;
+
+    @OneToMany(mappedBy = "majorPosts", cascade = CascadeType.REMOVE)
+    private List<MajorPostsComment> majorPostsComments;
+
 
     public void update(String title, String content) {
         this.title = title;
