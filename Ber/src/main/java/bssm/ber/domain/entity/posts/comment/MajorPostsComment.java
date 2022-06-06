@@ -9,6 +9,9 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static javax.persistence.FetchType.LAZY;
 
 @Builder
@@ -33,7 +36,7 @@ public class MajorPostsComment {
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "users_id")
-    private Users users;
+    private Users writer;
 
     @Column(name = "created_date")
     @CreatedDate

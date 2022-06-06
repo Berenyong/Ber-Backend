@@ -1,6 +1,8 @@
 package bssm.ber.domain.entity.users;
 
 import bssm.ber.domain.BaseTimeEntity;
+import bssm.ber.domain.entity.posts.comment.FreePostsComment;
+import bssm.ber.domain.entity.posts.posts.FreePosts;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -11,6 +13,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static javax.persistence.CascadeType.ALL;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -43,6 +47,28 @@ public class Users extends BaseTimeEntity implements UserDetails {
 
     @Column(length = 1000)
     private String blogLink;
+
+    //== 회원탈퇴 -> 작성한 게시물, 댓글 모두 삭제 ==//
+    @Builder.Default
+    @OneToMany(mappedBy = "users", cascade = ALL, orphanRemoval = true)
+    private List<FreePosts> postList = new ArrayList<>();
+
+    @Builder.Default
+    @OneToMany(mappedBy = "writer", cascade = ALL, orphanRemoval = true)
+    private List<FreePostsComment> commentList = new ArrayList<>();
+
+    //== 연관관계 메서드 ==//
+    public void addPost(FreePosts post){
+        //post의 writer 설정은 post에서 함
+        postList.add(post);
+    }
+
+    public void addComment(FreePostsComment comment){
+        //comment의 writer 설정은 comment에서 함
+        commentList.add(comment);
+    }
+
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -34,7 +34,7 @@ public class FreePostsComment {
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "users_id")
-    private Users users;
+    private Users writer;
 
     @Column(name = "created_date")
     @CreatedDate
@@ -48,8 +48,32 @@ public class FreePostsComment {
     @JoinColumn(name = "parent_id")
     private FreePostsComment parent;
 
+    @OneToMany(mappedBy = "parent")
+    private List<FreePostsComment> childList = new ArrayList<>();
+
+
     public void updateComment(String comment) {
         this.comment = comment;
+    }
+
+    //== 연관관계 편의 메서드 ==//
+    public void confirmWriter(Users writer) {
+        this.writer = writer;
+        writer.addComment(this);
+    }
+
+    public void confirmPost(FreePosts post) {
+        this.freePosts = post;
+        post.addComment(this);
+    }
+
+    public void confirmParent(FreePostsComment parent){
+        this.parent = parent;
+        parent.addChild(this);
+    }
+
+    public void addChild(FreePostsComment child){
+        childList.add(child);
     }
 
 }
