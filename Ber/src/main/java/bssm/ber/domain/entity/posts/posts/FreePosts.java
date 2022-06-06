@@ -7,6 +7,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -34,11 +35,24 @@ public class FreePosts extends BaseTimeEntity {
 
     // 양방향 연관관계이며, 게시글 삭제시 댓글 또한 삭제되어야 하기 때문에 CascadeType.REMOVE 사용합니다.
     @OneToMany(mappedBy = "freePosts", cascade = CascadeType.REMOVE)
-    private List<FreePostsComment> freePostsComments;
+    private List<FreePostsComment> freePostsComments = new ArrayList<>();
 
     public void update(String title, String content) {
         this.title = title;
         this.content = content;
     }
+
+    //== 연관관계 편의 메서드 ==//
+    public void confirmWriter(Users writer) {
+        //writer는 변경이 불가능하므로 이렇게만 해주어도 될듯
+        this.users = writer;
+        writer.addPost(this);
+    }
+
+    public void addComment(FreePostsComment comment){
+        //comment의 Post 설정은 comment에서 함
+        freePostsComments.add(comment);
+    }
+
 
 }

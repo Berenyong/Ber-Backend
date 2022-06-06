@@ -13,7 +13,8 @@ public class FreePostsCommentApiController {
 
     private final FreePostsCommentService freePostsCommentService;
 
-    @PostMapping("/{id}/save")
+    // id == freePosts_id
+    @PostMapping("/{id}/create")
     public Long save(@PathVariable Long id,
                      @RequestBody FreePostsCommentRequestDto requestDto){
         return freePostsCommentService.saveComment(id, requestDto);

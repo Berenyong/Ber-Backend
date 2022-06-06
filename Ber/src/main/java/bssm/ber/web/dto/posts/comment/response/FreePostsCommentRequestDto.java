@@ -18,10 +18,6 @@ public class FreePostsCommentRequestDto {
 
     private Long id;
     private String comment;
-    private String createdDate
-            = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm"));
-    private String modifiedDate
-            = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm"));
     private FreePosts freePosts;
 
     // Dto -> Entity
@@ -30,8 +26,6 @@ public class FreePostsCommentRequestDto {
         return FreePostsComment.builder()
                 .id(id)
                 .comment(comment)
-                .createdDate(createdDate)
-                .modifiedDate(modifiedDate)
                 .freePosts(freePosts)
                 .build();
     }

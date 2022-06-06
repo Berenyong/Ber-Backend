@@ -4,6 +4,8 @@ import bssm.ber.domain.entity.posts.posts.FreePosts;
 import bssm.ber.domain.entity.posts.comment.FreePostsComment;
 import bssm.ber.domain.entity.posts.comment.repository.FreePostsCommentRepository;
 import bssm.ber.domain.entity.posts.posts.repository.FreePostsRepository;
+import bssm.ber.domain.entity.users.UsersRepository;
+import bssm.ber.security.SecurityUtil;
 import bssm.ber.service.posts.comment.FreePostsCommentService;
 import bssm.ber.web.dto.posts.comment.response.FreePostsCommentRequestDto;
 import bssm.ber.web.dto.posts.comment.response.FreePostsCommentResponseDto;
@@ -20,8 +22,9 @@ import java.util.stream.Collectors;
 @Transactional(readOnly = true)
 public class FreePostsCommentServiceImpl implements FreePostsCommentService {
 
-    private final FreePostsCommentRepository freePostsCommentRepository;
+    private final UsersRepository usersRepository;
     private final FreePostsRepository freePostsRepository;
+    private final FreePostsCommentRepository freePostsCommentRepository;
 
     @Transactional
     @Override
@@ -31,7 +34,19 @@ public class FreePostsCommentServiceImpl implements FreePostsCommentService {
         FreePosts freePosts = byId.get();
 
         requestDto.setFreePosts(freePosts);
+
         FreePostsComment freePostsComment = requestDto.toEntity();
+
+        freePostsComment
+                .confirmWriter(usersRepository
+                        .findByEmail(SecurityUtil.getLoginUserEmail())
+                        .orElseThrow(() -> new IllegalArgumentException("회원이 존재하지 않습니다.")));
+
+        freePostsComment
+                .confirmPost(freePostsRepository
+                        .findById(id)
+                        .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 게시글입니다.")));
+
         freePostsCommentRepository.save(freePostsComment);
 
         return requestDto.getId();

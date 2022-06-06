@@ -16,10 +16,6 @@ import java.time.format.DateTimeFormatter;
 public class FreePostsCommentResponseDto {
     private Long id;
     private String comment;
-    private String createdDate
-            = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm"));
-    private String modifiedDate
-            = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm"));
     private String nickname;
     private Long postsId;
 
@@ -27,11 +23,9 @@ public class FreePostsCommentResponseDto {
     public FreePostsCommentResponseDto(FreePostsComment comment) {
         this.id = comment.getId();
         this.comment = comment.getComment();
-        this.createdDate = comment.getCreatedDate();
-        this.modifiedDate = comment.getModifiedDate();
         // getUsers 가 동작하지 않습니다.
         // -> FreePostsCommentRequestDto 에서 Users 를 Entity 로 변환해야 합니다.
-        this.nickname = comment.getUsers().getNickname();
+        this.nickname = comment.getWriter().getNickname();
         this.postsId = comment.getFreePosts().getId();
     }
 }
