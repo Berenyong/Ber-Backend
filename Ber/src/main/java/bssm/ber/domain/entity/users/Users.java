@@ -2,7 +2,13 @@ package bssm.ber.domain.entity.users;
 
 import bssm.ber.domain.BaseTimeEntity;
 import bssm.ber.domain.entity.posts.comment.FreePostsComment;
+import bssm.ber.domain.entity.posts.comment.MajorPostsComment;
+import bssm.ber.domain.entity.posts.comment.ManagerPostsComment;
+import bssm.ber.domain.entity.posts.comment.ShareMajorPostsComment;
 import bssm.ber.domain.entity.posts.posts.FreePosts;
+import bssm.ber.domain.entity.posts.posts.MajorPosts;
+import bssm.ber.domain.entity.posts.posts.ManagerPosts;
+import bssm.ber.domain.entity.posts.posts.ShareMajorPosts;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -51,21 +57,78 @@ public class Users extends BaseTimeEntity implements UserDetails {
     //== 회원탈퇴 -> 작성한 게시물, 댓글 모두 삭제 ==//
     @Builder.Default
     @OneToMany(mappedBy = "users", cascade = ALL, orphanRemoval = true)
-    private List<FreePosts> postList = new ArrayList<>();
+    private List<FreePosts> freePostsList = new ArrayList<>();
 
     @Builder.Default
     @OneToMany(mappedBy = "writer", cascade = ALL, orphanRemoval = true)
-    private List<FreePostsComment> commentList = new ArrayList<>();
+    private List<FreePostsComment> freePostsCommentList = new ArrayList<>();
 
     //== 연관관계 메서드 ==//
     public void addPost(FreePosts post){
         // post 의 writer 설정은 post에서 합니다.
-        postList.add(post);
+        freePostsList.add(post);
     }
 
     public void addComment(FreePostsComment comment){
         // comment 의 writer 설정은 comment에서 합니다.
-        commentList.add(comment);
+        freePostsCommentList.add(comment);
+    }
+
+    @Builder.Default
+    @OneToMany(mappedBy = "users", cascade = ALL, orphanRemoval = true)
+    private List<MajorPosts> majorPostsList = new ArrayList<>();
+
+    @Builder.Default
+    @OneToMany(mappedBy = "writer", cascade = ALL, orphanRemoval = true)
+    private List<MajorPostsComment> majorPostsCommentList = new ArrayList<>();
+
+    //== 연관관계 메서드 ==//
+    public void addPost(MajorPosts post){
+        // post 의 writer 설정은 post에서 합니다.
+        majorPostsList.add(post);
+    }
+
+    public void addComment(MajorPostsComment comment){
+        // comment 의 writer 설정은 comment에서 합니다.
+        majorPostsCommentList.add(comment);
+    }
+
+    @Builder.Default
+    @OneToMany(mappedBy = "users", cascade = ALL, orphanRemoval = true)
+    private List<ManagerPosts> managerPostsList = new ArrayList<>();
+
+    @Builder.Default
+    @OneToMany(mappedBy = "writer", cascade = ALL, orphanRemoval = true)
+    private List<ManagerPostsComment> managerPostsCommentList = new ArrayList<>();
+
+    //== 연관관계 메서드 ==//
+    public void addPost(ManagerPosts post){
+        // post 의 writer 설정은 post에서 합니다.
+        managerPostsList.add(post);
+    }
+
+    public void addComment(ManagerPostsComment comment){
+        // comment 의 writer 설정은 comment에서 합니다.
+        managerPostsCommentList.add(comment);
+    }
+
+    @Builder.Default
+    @OneToMany(mappedBy = "users", cascade = ALL, orphanRemoval = true)
+    private List<ShareMajorPosts> shareMajorPostsList = new ArrayList<>();
+
+    @Builder.Default
+    @OneToMany(mappedBy = "writer", cascade = ALL, orphanRemoval = true)
+    private List<ShareMajorPostsComment> shareMajorPostsCommentList = new ArrayList<>();
+
+    //== 연관관계 메서드 ==//
+    public void addPost(ShareMajorPosts post){
+        // post 의 writer 설정은 post에서 합니다.
+        shareMajorPostsList.add(post);
+    }
+
+    public void addComment(ShareMajorPostsComment comment){
+        // comment 의 writer 설정은 comment에서 합니다.
+        shareMajorPostsCommentList.add(comment);
     }
 
     @Override
