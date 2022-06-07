@@ -59,12 +59,12 @@ public class Users extends BaseTimeEntity implements UserDetails {
 
     //== 연관관계 메서드 ==//
     public void addPost(FreePosts post){
-        //post의 writer 설정은 post에서 함
+        // post 의 writer 설정은 post에서 합니다.
         postList.add(post);
     }
 
     public void addComment(FreePostsComment comment){
-        //comment의 writer 설정은 comment에서 함
+        // comment 의 writer 설정은 comment에서 합니다.
         commentList.add(comment);
     }
 

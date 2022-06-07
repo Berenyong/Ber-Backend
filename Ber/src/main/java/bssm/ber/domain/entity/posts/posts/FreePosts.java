@@ -44,13 +44,13 @@ public class FreePosts extends BaseTimeEntity {
 
     //== 연관관계 편의 메서드 ==//
     public void confirmWriter(Users writer) {
-        //writer는 변경이 불가능하므로 이렇게만 해주어도 될듯
+        // writer 는 변경이 불가능하므로 이렇게만 해주겠습니다.
         this.users = writer;
         writer.addPost(this);
     }
 
     public void addComment(FreePostsComment comment){
-        //comment의 Post 설정은 comment에서 함
+        // comment 의 Post 설정은 comment에서 합니다.
         freePostsComments.add(comment);
     }
 
