@@ -1,4 +1,4 @@
-package bssm.ber.web.dto.posts.comment.response;
+package bssm.ber.web.dto.posts.comment.request;
 
 import bssm.ber.domain.entity.posts.comment.FreePostsComment;
 import bssm.ber.domain.entity.posts.posts.FreePosts;

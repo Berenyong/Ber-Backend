@@ -7,7 +7,7 @@ import bssm.ber.domain.entity.posts.posts.repository.FreePostsRepository;
 import bssm.ber.domain.entity.users.UsersRepository;
 import bssm.ber.security.SecurityUtil;
 import bssm.ber.service.posts.comment.FreePostsCommentService;
-import bssm.ber.web.dto.posts.comment.response.FreePostsCommentRequestDto;
+import bssm.ber.web.dto.posts.comment.request.FreePostsCommentRequestDto;
 import bssm.ber.web.dto.posts.comment.response.FreePostsCommentResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -58,5 +58,23 @@ public class FreePostsCommentServiceImpl implements FreePostsCommentService {
                 .stream()
                 .map(FreePostsCommentResponseDto::new)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public Long updateComment(Long id, FreePostsCommentRequestDto requestDto) {
+        FreePostsComment freePostsComment = freePostsCommentRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 댓글이 존재하지 않습니다."));
+
+        freePostsComment.updateComment(requestDto.getComment());
+        return freePostsComment.getId();
+    }
+
+    @Override
+    public Long deleteComment(Long id) {
+        Optional<FreePostsComment> byId = freePostsCommentRepository.findById(id);
+        FreePostsComment freePostsComment = byId.get();
+
+        freePostsCommentRepository.deleteById(id);
+        return freePostsComment.getId();
     }
 }
