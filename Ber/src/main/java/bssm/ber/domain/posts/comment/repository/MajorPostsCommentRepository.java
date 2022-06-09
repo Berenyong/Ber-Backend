@@ -1,6 +1,6 @@
-package bssm.ber.domain.entity.posts.comment.repository;
+package bssm.ber.domain.posts.comment.repository;
 
-import bssm.ber.domain.entity.posts.comment.MajorPostsComment;
+import bssm.ber.domain.posts.comment.MajorPostsComment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

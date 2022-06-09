@@ -1,8 +1,7 @@
 package bssm.ber.service.users.impl;
 
-import bssm.ber.domain.entity.posts.comment.FreePostsComment;
-import bssm.ber.domain.entity.users.Users;
-import bssm.ber.domain.entity.users.UsersRepository;
+import bssm.ber.domain.users.Users;
+import bssm.ber.domain.users.UsersRepository;
 import bssm.ber.security.jwt.JwtTokenProvider;
 import bssm.ber.service.users.UsersService;
 import bssm.ber.web.dto.users.UsersJoinRequestDto;
@@ -11,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;

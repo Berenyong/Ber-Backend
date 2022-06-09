@@ -1,6 +1,6 @@
 package bssm.ber.web.dto.posts.posts.response;
 
-import bssm.ber.domain.entity.posts.posts.FreePosts;
+import bssm.ber.domain.posts.posts.FreePosts;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

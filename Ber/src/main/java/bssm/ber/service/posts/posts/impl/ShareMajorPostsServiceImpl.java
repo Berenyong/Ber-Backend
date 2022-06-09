@@ -1,7 +1,7 @@
 package bssm.ber.service.posts.posts.impl;
 
-import bssm.ber.domain.entity.posts.posts.ShareMajorPosts;
-import bssm.ber.domain.entity.posts.posts.repository.ShareMajorPostsRepository;
+import bssm.ber.domain.posts.posts.ShareMajorPosts;
+import bssm.ber.domain.posts.posts.repository.ShareMajorPostsRepository;
 import bssm.ber.service.posts.posts.ShareMajorPostsService;
 import bssm.ber.web.dto.posts.posts.request.ShareMajorPostsCreateRequestDto;
 import bssm.ber.web.dto.posts.posts.response.ShareMajorPostsResponseDto;

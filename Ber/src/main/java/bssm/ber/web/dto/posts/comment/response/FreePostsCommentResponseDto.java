@@ -1,13 +1,10 @@
 package bssm.ber.web.dto.posts.comment.response;
 
-import bssm.ber.domain.entity.posts.comment.FreePostsComment;
+import bssm.ber.domain.posts.comment.FreePostsComment;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 @RequiredArgsConstructor
 @AllArgsConstructor

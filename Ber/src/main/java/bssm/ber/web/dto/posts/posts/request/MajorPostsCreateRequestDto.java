@@ -1,6 +1,6 @@
 package bssm.ber.web.dto.posts.posts.request;
 
-import bssm.ber.domain.entity.posts.posts.MajorPosts;
+import bssm.ber.domain.posts.posts.MajorPosts;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

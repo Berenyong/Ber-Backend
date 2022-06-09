@@ -1,9 +1,8 @@
-package bssm.ber.domain.entity.posts.posts;
+package bssm.ber.domain.posts.posts;
 
 import bssm.ber.domain.BaseTimeEntity;
-import bssm.ber.domain.entity.posts.comment.MajorPostsComment;
-import bssm.ber.domain.entity.posts.comment.ManagerPostsComment;
-import bssm.ber.domain.entity.users.Users;
+import bssm.ber.domain.posts.comment.MajorPostsComment;
+import bssm.ber.domain.users.Users;
 import lombok.*;
 
 import javax.persistence.*;
@@ -16,10 +15,11 @@ import java.util.List;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class ManagerPosts extends BaseTimeEntity {
+public class MajorPosts extends BaseTimeEntity {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "managerPosts_id")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "majorPosts_id")
     private Long id;
 
     @NotNull
@@ -35,8 +35,8 @@ public class ManagerPosts extends BaseTimeEntity {
     private Users users;
 
     // 양방향 연관관계이며, 게시글 삭제시 댓글 또한 삭제되어야 하기 때문에 CascadeType.REMOVE 사용합니다.
-    @OneToMany(mappedBy = "managerPosts", cascade = CascadeType.REMOVE)
-    private List<ManagerPostsComment> managerPostsComments = new ArrayList<>();
+    @OneToMany(mappedBy = "majorPosts", cascade = CascadeType.REMOVE)
+    private List<MajorPostsComment> majorPostsComments = new ArrayList<>();
 
     //== 연관관계 편의 메서드 ==//
     public void confirmWriter(Users writer) {
@@ -45,15 +45,14 @@ public class ManagerPosts extends BaseTimeEntity {
         writer.addPost(this);
     }
 
-    public void addComment(ManagerPostsComment comment){
+    public void addComment(MajorPostsComment comment){
         // comment 의 Post 설정은 comment에서 합니다.
-        managerPostsComments.add(comment);
+        majorPostsComments.add(comment);
     }
 
     public void update(String title, String content) {
         this.title = title;
         this.content = content;
     }
-
-
 }
+

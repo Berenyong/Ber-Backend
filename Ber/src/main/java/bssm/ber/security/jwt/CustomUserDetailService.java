@@ -1,6 +1,6 @@
 package bssm.ber.security.jwt;
 
-import bssm.ber.domain.entity.users.UsersRepository;
+import bssm.ber.domain.users.UsersRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

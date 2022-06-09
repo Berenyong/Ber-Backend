@@ -1,8 +1,8 @@
-package bssm.ber.domain.entity.posts.posts;
+package bssm.ber.domain.posts.posts;
 
 import bssm.ber.domain.BaseTimeEntity;
-import bssm.ber.domain.entity.posts.comment.FreePostsComment;
-import bssm.ber.domain.entity.users.Users;
+import bssm.ber.domain.posts.comment.FreePostsComment;
+import bssm.ber.domain.users.Users;
 import lombok.*;
 
 import javax.persistence.*;

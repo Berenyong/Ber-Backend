@@ -1,7 +1,7 @@
 package bssm.ber.web.dto.posts.comment.request;
 
-import bssm.ber.domain.entity.posts.comment.ManagerPostsComment;
-import bssm.ber.domain.entity.posts.posts.ManagerPosts;
+import bssm.ber.domain.posts.comment.ManagerPostsComment;
+import bssm.ber.domain.posts.posts.ManagerPosts;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

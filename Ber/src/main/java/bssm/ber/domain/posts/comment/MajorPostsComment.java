@@ -1,8 +1,7 @@
-package bssm.ber.domain.entity.posts.comment;
+package bssm.ber.domain.posts.comment;
 
-import bssm.ber.domain.entity.posts.posts.FreePosts;
-import bssm.ber.domain.entity.posts.posts.MajorPosts;
-import bssm.ber.domain.entity.users.Users;
+import bssm.ber.domain.posts.posts.MajorPosts;
+import bssm.ber.domain.users.Users;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;

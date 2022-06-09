@@ -1,6 +1,5 @@
-package bssm.ber.domain.entity.users;
+package bssm.ber.domain.users;
 
-import bssm.ber.web.dto.users.UsersResponseDto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

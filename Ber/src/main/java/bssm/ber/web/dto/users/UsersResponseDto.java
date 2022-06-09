@@ -1,6 +1,6 @@
 package bssm.ber.web.dto.users;
 
-import bssm.ber.domain.entity.users.Users;
+import bssm.ber.domain.users.Users;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

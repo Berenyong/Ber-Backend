@@ -1,6 +1,5 @@
 package bssm.ber.web.api.users;
 
-import bssm.ber.domain.entity.users.Users;
 import bssm.ber.service.users.UsersService;
 import bssm.ber.web.dto.users.UsersJoinRequestDto;
 import bssm.ber.web.dto.users.UsersResponseDto;

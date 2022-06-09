@@ -1,20 +1,13 @@
 package bssm.ber.service.posts.comment.impl;
 
-import bssm.ber.domain.entity.posts.comment.FreePostsComment;
-import bssm.ber.domain.entity.posts.comment.MajorPostsComment;
-import bssm.ber.domain.entity.posts.comment.repository.FreePostsCommentRepository;
-import bssm.ber.domain.entity.posts.comment.repository.MajorPostsCommentRepository;
-import bssm.ber.domain.entity.posts.posts.FreePosts;
-import bssm.ber.domain.entity.posts.posts.MajorPosts;
-import bssm.ber.domain.entity.posts.posts.repository.FreePostsRepository;
-import bssm.ber.domain.entity.posts.posts.repository.MajorPostsRepository;
-import bssm.ber.domain.entity.users.UsersRepository;
+import bssm.ber.domain.posts.comment.MajorPostsComment;
+import bssm.ber.domain.posts.comment.repository.MajorPostsCommentRepository;
+import bssm.ber.domain.posts.posts.MajorPosts;
+import bssm.ber.domain.posts.posts.repository.MajorPostsRepository;
+import bssm.ber.domain.users.UsersRepository;
 import bssm.ber.security.SecurityUtil;
-import bssm.ber.service.posts.comment.FreePostsCommentService;
 import bssm.ber.service.posts.comment.MajorPostsCommentService;
-import bssm.ber.web.dto.posts.comment.request.FreePostsCommentRequestDto;
 import bssm.ber.web.dto.posts.comment.request.MajorPostsCommentRequestDto;
-import bssm.ber.web.dto.posts.comment.response.FreePostsCommentResponseDto;
 import bssm.ber.web.dto.posts.comment.response.MajorPostsCommentResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

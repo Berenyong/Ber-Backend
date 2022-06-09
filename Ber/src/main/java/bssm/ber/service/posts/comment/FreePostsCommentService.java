@@ -10,7 +10,7 @@ public interface FreePostsCommentService {
 
     public Long saveComment(Long id, FreePostsCommentRequestDto requestDto);
 
-    public List<FreePostsCommentResponseDto> findAllDesc();
+    public List<FreePostsCommentResponseDto> findAllDesc(Long id);
 
     public Long updateComment(Long id, FreePostsCommentRequestDto requestDto);
     public Long deleteComment(Long id);

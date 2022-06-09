@@ -1,10 +1,10 @@
 package bssm.ber.service.posts.comment.impl;
 
-import bssm.ber.domain.entity.posts.posts.FreePosts;
-import bssm.ber.domain.entity.posts.comment.FreePostsComment;
-import bssm.ber.domain.entity.posts.comment.repository.FreePostsCommentRepository;
-import bssm.ber.domain.entity.posts.posts.repository.FreePostsRepository;
-import bssm.ber.domain.entity.users.UsersRepository;
+import bssm.ber.domain.posts.posts.FreePosts;
+import bssm.ber.domain.posts.comment.FreePostsComment;
+import bssm.ber.domain.posts.comment.repository.FreePostsCommentRepository;
+import bssm.ber.domain.posts.posts.repository.FreePostsRepository;
+import bssm.ber.domain.users.UsersRepository;
 import bssm.ber.security.SecurityUtil;
 import bssm.ber.service.posts.comment.FreePostsCommentService;
 import bssm.ber.web.dto.posts.comment.request.FreePostsCommentRequestDto;
@@ -53,8 +53,8 @@ public class FreePostsCommentServiceImpl implements FreePostsCommentService {
     }
 
     @Override
-    public List<FreePostsCommentResponseDto> findAllDesc() {
-        return freePostsCommentRepository.findAllDesc()
+    public List<FreePostsCommentResponseDto> findAllDesc(Long id) {
+        return freePostsCommentRepository.findAllDesc(id)
                 .stream()
                 .map(FreePostsCommentResponseDto::new)
                 .collect(Collectors.toList());

@@ -20,18 +20,19 @@ public class FreePostsCommentApiController {
         return freePostsCommentService.saveComment(id, requestDto);
     }
 
-    @GetMapping("/findAll")
-    public Result findAll(){
-        return new Result(freePostsCommentService.findAllDesc());
+    // 현재 접속한 게시판의 댓글을 모두 조회함
+    @GetMapping("/{id}/findAll")
+    public Result findAll(@PathVariable Long id){
+        return new Result(freePostsCommentService.findAllDesc(id));
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}/update")
     public Long update(@PathVariable Long id,
                        @RequestBody FreePostsCommentRequestDto requestDto) {
         return freePostsCommentService.updateComment(id, requestDto);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}/delete")
     public Long delete(@PathVariable Long id) {
         return freePostsCommentService.deleteComment(id);
     }

@@ -1,6 +1,6 @@
-package bssm.ber.domain.entity.posts.posts.repository;
+package bssm.ber.domain.posts.posts.repository;
 
-import bssm.ber.domain.entity.posts.posts.MajorPosts;
+import bssm.ber.domain.posts.posts.MajorPosts;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

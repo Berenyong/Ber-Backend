@@ -1,14 +1,14 @@
-package bssm.ber.domain.entity.users;
+package bssm.ber.domain.users;
 
 import bssm.ber.domain.BaseTimeEntity;
-import bssm.ber.domain.entity.posts.comment.FreePostsComment;
-import bssm.ber.domain.entity.posts.comment.MajorPostsComment;
-import bssm.ber.domain.entity.posts.comment.ManagerPostsComment;
-import bssm.ber.domain.entity.posts.comment.ShareMajorPostsComment;
-import bssm.ber.domain.entity.posts.posts.FreePosts;
-import bssm.ber.domain.entity.posts.posts.MajorPosts;
-import bssm.ber.domain.entity.posts.posts.ManagerPosts;
-import bssm.ber.domain.entity.posts.posts.ShareMajorPosts;
+import bssm.ber.domain.posts.comment.FreePostsComment;
+import bssm.ber.domain.posts.comment.MajorPostsComment;
+import bssm.ber.domain.posts.comment.ManagerPostsComment;
+import bssm.ber.domain.posts.comment.ShareMajorPostsComment;
+import bssm.ber.domain.posts.posts.FreePosts;
+import bssm.ber.domain.posts.posts.MajorPosts;
+import bssm.ber.domain.posts.posts.ManagerPosts;
+import bssm.ber.domain.posts.posts.ShareMajorPosts;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

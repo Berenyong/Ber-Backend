@@ -1,7 +1,7 @@
 package bssm.ber.service.posts.posts.impl;
 
-import bssm.ber.domain.entity.posts.posts.ManagerPosts;
-import bssm.ber.domain.entity.posts.posts.repository.ManagerPostsRepository;
+import bssm.ber.domain.posts.posts.ManagerPosts;
+import bssm.ber.domain.posts.posts.repository.ManagerPostsRepository;
 import bssm.ber.service.posts.posts.ManagerPostsService;
 import bssm.ber.web.dto.posts.posts.request.ManagerPostsCreateRequestDto;
 import bssm.ber.web.dto.posts.posts.response.ManagerPostsResponseDto;

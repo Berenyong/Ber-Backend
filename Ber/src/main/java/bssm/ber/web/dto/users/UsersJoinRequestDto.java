@@ -1,12 +1,11 @@
 package bssm.ber.web.dto.users;
 
-import bssm.ber.domain.entity.users.Users;
+import bssm.ber.domain.users.Users;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
-import javax.validation.constraints.Pattern;
 import java.util.Collections;
 import java.util.List;
 
