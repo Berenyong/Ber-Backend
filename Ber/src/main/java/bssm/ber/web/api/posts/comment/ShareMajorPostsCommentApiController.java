@@ -22,9 +22,9 @@ public class ShareMajorPostsCommentApiController {
         return shareMajorPostsCommentService.saveComment(id, requestDto);
     }
 
-    @GetMapping("/findAll")
-    public Result findAll(){
-        return new Result(shareMajorPostsCommentService.findAllDesc());
+    @GetMapping("/{id}/findAll")
+    public Result findAll(@PathVariable Long id){
+        return new Result(shareMajorPostsCommentService.findAllDesc(id));
     }
 
     @PutMapping("/update/{id}")

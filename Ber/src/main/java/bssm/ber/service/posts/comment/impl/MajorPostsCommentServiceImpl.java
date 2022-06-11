@@ -53,8 +53,8 @@ public class MajorPostsCommentServiceImpl implements MajorPostsCommentService {
     }
 
     @Override
-    public List<MajorPostsCommentResponseDto> findAllDesc() {
-        return majorPostsCommentRepository.findAllDesc()
+    public List<MajorPostsCommentResponseDto> findAllDesc(Long id) {
+        return majorPostsCommentRepository.findAllDesc(id)
                 .stream()
                 .map(MajorPostsCommentResponseDto::new)
                 .collect(Collectors.toList());
