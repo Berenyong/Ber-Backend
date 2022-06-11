@@ -28,7 +28,7 @@ public class ShareMajorPostsComment extends BaseTimeEntity {
 
     private boolean isRemoved= false;
     @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "freePosts_id")
+    @JoinColumn(name = "shareMajorPosts_id")
     private ShareMajorPosts shareMajorPosts;
 
     @ManyToOne(fetch = LAZY)

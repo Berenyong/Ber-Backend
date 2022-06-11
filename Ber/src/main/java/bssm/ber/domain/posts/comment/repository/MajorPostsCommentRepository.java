@@ -9,6 +9,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface MajorPostsCommentRepository extends JpaRepository<MajorPostsComment, Long> {
-    @Query("select mpc from MajorPostsComment mpc where mpc.MajorPosts.id = :id")
+    @Query("select mpc from MajorPostsComment mpc where mpc.majorPosts.id = :id")
     List<MajorPostsComment> findAllDesc(@Param("id") Long id);
 }

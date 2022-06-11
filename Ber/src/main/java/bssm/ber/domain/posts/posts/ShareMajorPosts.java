@@ -37,6 +37,11 @@ public class ShareMajorPosts extends BaseTimeEntity {
     @OneToMany(mappedBy = "shareMajorPosts", cascade = CascadeType.REMOVE)
     private List<ShareMajorPostsComment> shareMajorPostsComments = new ArrayList<>();
 
+    public void update(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
+
     //== 연관관계 편의 메서드 ==//
     public void confirmWriter(Users writer) {
         // writer 는 변경이 불가능하므로 이렇게만 해주겠습니다.
@@ -49,11 +54,4 @@ public class ShareMajorPosts extends BaseTimeEntity {
         shareMajorPostsComments.add(comment);
     }
 
-    public void update(String title, String content) {
-        this.title = title;
-        this.content = content;
-    }
-
-
 }
-

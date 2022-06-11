@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface ShareMajorPostsCommentRepository extends JpaRepository<ShareMajorPostsComment, Long> {
 
-    @Query("select smpc from ShareMajorPostsComment smpc where ShareMajorPosts.id = :id")
+    @Query("select smpc from ShareMajorPostsComment smpc where smpc.shareMajorPosts.id = :id")
     List<ShareMajorPostsComment> findAllDesc(@Param("id") Long id);
 }

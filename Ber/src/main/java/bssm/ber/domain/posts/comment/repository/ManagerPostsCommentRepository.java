@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface ManagerPostsCommentRepository extends JpaRepository<ManagerPostsComment, Long> {
 
-    @Query("select mpc from ManagerPostsComment mpc where mpc.ManagerPosts.id = :id")
+    @Query("select mpc from ManagerPostsComment mpc where mpc.managerPosts.id = :id")
     List<ManagerPostsComment> findAllDesc(@Param("id") Long id);
 }

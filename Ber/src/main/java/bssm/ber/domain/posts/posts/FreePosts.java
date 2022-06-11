@@ -54,5 +54,4 @@ public class FreePosts extends BaseTimeEntity {
         freePostsComments.add(comment);
     }
 
-
 }

@@ -22,6 +22,9 @@ spring:
     show_sql: true
     format_sql: true
 
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
 #    default_batch_fetch_size: 1000
 
 logging.level:
