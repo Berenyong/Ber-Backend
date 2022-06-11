@@ -53,8 +53,8 @@ public class ManagerPostsCommentServiceImpl implements ManagerPostsCommentServic
     }
 
     @Override
-    public List<ManagerPostsCommentResponseDto> findAllDesc() {
-        return managerPostsCommentRepository.findAllDesc()
+    public List<ManagerPostsCommentResponseDto> findAllDesc(Long id) {
+        return managerPostsCommentRepository.findAllDesc(id)
                 .stream()
                 .map(ManagerPostsCommentResponseDto::new)
                 .collect(Collectors.toList());

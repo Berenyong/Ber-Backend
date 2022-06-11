@@ -9,7 +9,7 @@ public interface ShareMajorPostsCommentService {
 
     public Long saveComment(Long id, ShareMajorPostsCommentRequestDto requestDto);
 
-    public List<ShareMajorPostsCommentResponseDto> findAllDesc();
+    public List<ShareMajorPostsCommentResponseDto> findAllDesc(Long id);
 
     public Long updateComment(Long id, ShareMajorPostsCommentRequestDto requestDto);
     public Long deleteComment(Long id);

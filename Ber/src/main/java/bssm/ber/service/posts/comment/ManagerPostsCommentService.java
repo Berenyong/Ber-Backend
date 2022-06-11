@@ -9,7 +9,7 @@ public interface ManagerPostsCommentService {
 
     public Long saveComment(Long id, ManagerPostsCommentRequestDto requestDto);
 
-    public List<ManagerPostsCommentResponseDto> findAllDesc();
+    public List<ManagerPostsCommentResponseDto> findAllDesc(Long id);
 
     public Long updateComment(Long id, ManagerPostsCommentRequestDto requestDto);
     public Long deleteComment(Long id);

@@ -53,8 +53,8 @@ public class ShareMajorPostsCommentServiceImpl implements ShareMajorPostsComment
     }
 
     @Override
-    public List<ShareMajorPostsCommentResponseDto> findAllDesc() {
-        return shareMajorPostsCommentRepository.findAllDesc()
+    public List<ShareMajorPostsCommentResponseDto> findAllDesc(Long id) {
+        return shareMajorPostsCommentRepository.findAllDesc(id)
                 .stream()
                 .map(ShareMajorPostsCommentResponseDto::new)
                 .collect(Collectors.toList());
