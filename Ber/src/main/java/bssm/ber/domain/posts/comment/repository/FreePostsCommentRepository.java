@@ -9,7 +9,6 @@ import java.util.List;
 
 public interface FreePostsCommentRepository extends JpaRepository<FreePostsComment, Long> {
 
-//    @Query("select fpc from FreePostsComment fpc where fpc.freePosts.id = :id")
     @Query("select fpc from FreePostsComment fpc where fpc.freePosts.id = :id order by fpc.createdDate")
     List<FreePostsComment> findAllDesc(@Param("id") Long id);
 

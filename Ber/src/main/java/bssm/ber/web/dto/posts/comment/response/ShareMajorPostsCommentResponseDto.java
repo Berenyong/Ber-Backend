@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -16,6 +18,8 @@ public class ShareMajorPostsCommentResponseDto {
     private String nickname;
     private Long postsId;
 
+    private LocalDateTime createDate;
+
     // Entity -> Dto
     public ShareMajorPostsCommentResponseDto(ShareMajorPostsComment comment) {
         this.id = comment.getId();
@@ -24,6 +28,7 @@ public class ShareMajorPostsCommentResponseDto {
         // -> FreePostsCommentRequestDto 에서 Users 를 Entity 로 변환해야 합니다.
         this.nickname = comment.getWriter().getNickname();
         this.postsId = comment.getShareMajorPosts().getId();
+        this.createDate = comment.getCreatedDate();
     }
 
 }

@@ -1,5 +1,6 @@
 package bssm.ber.domain.posts.comment;
 
+import bssm.ber.domain.BaseTimeEntity;
 import bssm.ber.domain.posts.posts.MajorPosts;
 import bssm.ber.domain.users.Users;
 import lombok.*;
@@ -17,7 +18,7 @@ import static javax.persistence.FetchType.LAZY;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
-public class MajorPostsComment {
+public class MajorPostsComment extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,14 +36,6 @@ public class MajorPostsComment {
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "users_id")
     private Users writer;
-
-    @Column(name = "created_date")
-    @CreatedDate
-    private String createdDate;
-
-    @Column(name = "modified_date")
-    @LastModifiedDate
-    private String modifiedDate;
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "parent_id")
