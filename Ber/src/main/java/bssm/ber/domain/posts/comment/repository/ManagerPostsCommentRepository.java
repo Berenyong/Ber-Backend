@@ -11,4 +11,5 @@ public interface ManagerPostsCommentRepository extends JpaRepository<ManagerPost
 
     @Query("select mpc from ManagerPostsComment mpc where mpc.managerPosts.id = :id order by mpc.createdDate")
     List<ManagerPostsComment> findAllDesc(@Param("id") Long id);
+
 }
