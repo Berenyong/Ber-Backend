@@ -1,6 +1,6 @@
 ---
 name: "Bug \U0001F41E"
-about: Create a report to help us improve
+about: 버그가 발생했나요?
 title: ''
 labels: "\U0001F41E Bug"
 assignees: ''

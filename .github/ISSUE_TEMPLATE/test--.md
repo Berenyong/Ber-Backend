@@ -1,6 +1,6 @@
 ---
 name: Test ✅
-about: Create a report to help us improve
+about: "TDD를 실천합시다 \U0001F600"
 title: ''
 labels: "✅ Test"
 assignees: ''
