@@ -119,4 +119,6 @@ logging.level:
 ***
 
 ## ERD
+![ber-erd](https://user-images.githubusercontent.com/94087228/174112064-d0eb55e3-b31b-418a-95e6-bc94d59e6768.png)
+
 <img width="944" alt="Ber ERD" src="https://user-images.githubusercontent.com/94087228/170522336-0942284d-9390-4475-800a-4370e3d21136.png">
