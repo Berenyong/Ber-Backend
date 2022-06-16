@@ -38,7 +38,6 @@ public class FreePostsComment extends BaseTimeEntity {
     @JoinColumn(name = "parent_id")
     private FreePostsComment parent;
 
-
     //== 부모 댓글을 삭제해도 자식 댓글은 남아있습니다. ==//
     @OneToMany(mappedBy = "parent")
     private List<FreePostsComment> childList = new ArrayList<>();

@@ -12,11 +12,13 @@ public class FreePostsResponseDto {
     private Long id;
     private String title;
     private String content;
+    private String nickname;
 
     @Builder
     public FreePostsResponseDto(FreePosts freePosts) {
         this.id = freePosts.getId();
         this.title = freePosts.getTitle();
         this.content = freePosts.getContent();
+        this.nickname = freePosts.getWriter().getNickname();
     }
 }

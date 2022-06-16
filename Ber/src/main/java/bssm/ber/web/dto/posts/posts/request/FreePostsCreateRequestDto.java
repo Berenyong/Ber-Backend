@@ -3,7 +3,7 @@ package bssm.ber.web.dto.posts.posts.request;
 import bssm.ber.domain.posts.posts.FreePosts;
 import lombok.*;
 
-@Getter
+@Data
 @AllArgsConstructor
 @Builder
 @NoArgsConstructor

@@ -56,23 +56,12 @@ public class Users extends BaseTimeEntity implements UserDetails {
 
     //== 회원탈퇴 -> 작성한 게시물, 댓글 모두 삭제 ==//
     @Builder.Default
-    @OneToMany(mappedBy = "users", cascade = ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "writer", cascade = ALL, orphanRemoval = true)
     private List<FreePosts> freePostsList = new ArrayList<>();
 
     @Builder.Default
     @OneToMany(mappedBy = "writer", cascade = ALL, orphanRemoval = true)
     private List<FreePostsComment> freePostsCommentList = new ArrayList<>();
-
-    //== 연관관계 메서드 ==//
-    public void addPost(FreePosts post){
-        // post 의 writer 설정은 post에서 합니다.
-        freePostsList.add(post);
-    }
-
-    public void addComment(FreePostsComment comment){
-        // comment 의 writer 설정은 comment에서 합니다.
-        freePostsCommentList.add(comment);
-    }
 
     @Builder.Default
     @OneToMany(mappedBy = "users", cascade = ALL, orphanRemoval = true)
@@ -82,17 +71,6 @@ public class Users extends BaseTimeEntity implements UserDetails {
     @OneToMany(mappedBy = "writer", cascade = ALL, orphanRemoval = true)
     private List<MajorPostsComment> majorPostsCommentList = new ArrayList<>();
 
-    //== 연관관계 메서드 ==//
-    public void addPost(MajorPosts post){
-        // post 의 writer 설정은 post에서 합니다.
-        majorPostsList.add(post);
-    }
-
-    public void addComment(MajorPostsComment comment){
-        // comment 의 writer 설정은 comment에서 합니다.
-        majorPostsCommentList.add(comment);
-    }
-
     @Builder.Default
     @OneToMany(mappedBy = "users", cascade = ALL, orphanRemoval = true)
     private List<ManagerPosts> managerPostsList = new ArrayList<>();
@@ -100,17 +78,6 @@ public class Users extends BaseTimeEntity implements UserDetails {
     @Builder.Default
     @OneToMany(mappedBy = "writer", cascade = ALL, orphanRemoval = true)
     private List<ManagerPostsComment> managerPostsCommentList = new ArrayList<>();
-
-    //== 연관관계 메서드 ==//
-    public void addPost(ManagerPosts post){
-        // post 의 writer 설정은 post에서 합니다.
-        managerPostsList.add(post);
-    }
-
-    public void addComment(ManagerPostsComment comment){
-        // comment 의 writer 설정은 comment에서 합니다.
-        managerPostsCommentList.add(comment);
-    }
 
     @Builder.Default
     @OneToMany(mappedBy = "users", cascade = ALL, orphanRemoval = true)
@@ -121,6 +88,35 @@ public class Users extends BaseTimeEntity implements UserDetails {
     private List<ShareMajorPostsComment> shareMajorPostsCommentList = new ArrayList<>();
 
     //== 연관관계 메서드 ==//
+    public void addFreePost(FreePosts post){
+        this.getFreePostsList().add(post);
+    }
+
+    public void addComment(FreePostsComment comment){
+        // comment 의 writer 설정은 comment에서 합니다.
+        freePostsCommentList.add(comment);
+    }
+
+    public void addPost(MajorPosts post){
+        // post 의 writer 설정은 post에서 합니다.
+        majorPostsList.add(post);
+    }
+
+    public void addComment(MajorPostsComment comment){
+        // comment 의 writer 설정은 comment에서 합니다.
+        majorPostsCommentList.add(comment);
+    }
+
+    public void addPost(ManagerPosts post){
+        // post 의 writer 설정은 post에서 합니다.
+        managerPostsList.add(post);
+    }
+
+    public void addComment(ManagerPostsComment comment){
+        // comment 의 writer 설정은 comment에서 합니다.
+        managerPostsCommentList.add(comment);
+    }
+
     public void addPost(ShareMajorPosts post){
         // post 의 writer 설정은 post에서 합니다.
         shareMajorPostsList.add(post);

@@ -10,7 +10,11 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+import static javax.persistence.FetchType.*;
+import static javax.persistence.FetchType.LAZY;
+
 @Getter
+@Setter
 @AllArgsConstructor
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -29,9 +33,9 @@ public class FreePosts extends BaseTimeEntity {
     @Column(columnDefinition = "TEXT", length = 2000)
     private String content;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "users_id", insertable = false, updatable = false)
-    private Users users;
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "users_id")
+    private Users writer;
 
     // 양방향 연관관계이며, 게시글 삭제시 댓글 또한 삭제되어야 하기 때문에 CascadeType.REMOVE 사용합니다.
     @OneToMany(mappedBy = "freePosts", cascade = CascadeType.REMOVE)
@@ -44,9 +48,8 @@ public class FreePosts extends BaseTimeEntity {
 
     //== 연관관계 편의 메서드 ==//
     public void confirmWriter(Users writer) {
-        // writer 는 변경이 불가능하므로 이렇게만 해주겠습니다.
-        this.users = writer;
-        writer.addPost(this);
+        this.writer = writer;
+        writer.addFreePost(this);
     }
 
     public void addComment(FreePostsComment comment){

@@ -7,6 +7,8 @@ import bssm.ber.web.generic.Result;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+
 @RequestMapping("/ber/api/posts/free")
 @RequiredArgsConstructor
 @RestController
@@ -15,8 +17,13 @@ public class FreePostsApiController {
     private final FreePostsService freePostsService;
 
     @PostMapping("/create")
-    public Long createPost(@RequestBody FreePostsCreateRequestDto freePostsCreateRequestDto){
-        return freePostsService.create(freePostsCreateRequestDto);
+    public Long createPost(@RequestBody FreePostsCreateRequestDto freePostsCreateRequestDto,
+                           Principal principal){
+        if (principal.getName() != null){
+            return freePostsService.create(freePostsCreateRequestDto);
+        }else {
+            throw new IllegalArgumentException("현재 로그인 하지 않은 상태입니다.");
+        }
     }
 
     @GetMapping("/find/title/{title}")
