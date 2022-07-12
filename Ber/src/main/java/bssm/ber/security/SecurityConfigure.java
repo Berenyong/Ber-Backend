@@ -41,6 +41,7 @@ public class SecurityConfigure extends WebSecurityConfigurerAdapter {
                 .authorizeRequests() // 요청에 대한 사용권한 체크
                 .antMatchers("/user/join").permitAll()
                 .antMatchers("/user/login").permitAll()
+                .antMatchers("/user/find/**").permitAll()
                 .antMatchers("/ber/api/posts/manager/**")
                 .access("hasRole('MANAGER') or hasRole('ADMIN')")
                 .antMatchers("/ber/api/posts/**")

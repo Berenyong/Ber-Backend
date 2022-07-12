@@ -9,7 +9,10 @@ import java.util.Optional;
 
 public interface UsersRepository extends JpaRepository<Users, Long> {
 
-    @Query("select u from Users u where u.nickname = :nickname")
+//    @Query("select u from Users u where u.nickname = :nickname")
+//    List<Users> findByNickname(@Param("nickname") String nickname);
+
+    @Query("select u from Users u where u.nickname like %:nickname%")
     List<Users> findByNickname(@Param("nickname") String nickname);
 
     Optional<Users> findByEmail(String email);

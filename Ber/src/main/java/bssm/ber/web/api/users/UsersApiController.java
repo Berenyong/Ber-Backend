@@ -25,7 +25,7 @@ public class UsersApiController {
         return usersService.join(usersJoinRequestDto);
     }
 
-    @GetMapping("/findAll/{nickname}")
+    @GetMapping("/find/all/{nickname}")
     @ResponseStatus(HttpStatus.OK)
     public Result findUsers(@PathVariable String nickname){
         return new Result(usersService.findUsers(nickname));

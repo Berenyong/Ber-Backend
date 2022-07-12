@@ -12,7 +12,6 @@ import java.util.List;
 public class UsersResponseDto {
 
     private Long id;
-    private String email;
     private String nickname;
     private int age;
     private String password;
@@ -21,7 +20,6 @@ public class UsersResponseDto {
     @Builder
     public UsersResponseDto(Users users) {
         this.id = users.getId();
-        this.email = users.getEmail();
         this.nickname = users.getNickname();
         this.age = users.getAge();
         this.password = users.getPassword();
