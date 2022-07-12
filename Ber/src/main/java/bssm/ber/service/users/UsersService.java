@@ -1,5 +1,7 @@
 package bssm.ber.service.users;
 
+import bssm.ber.web.dto.users.UsersUpdateRequestDto;
+import bssm.ber.web.dto.users.UsersUpdateResponseDto;
 import bssm.ber.web.dto.users.UsersJoinRequestDto;
 import bssm.ber.web.dto.users.UsersResponseDto;
 
@@ -17,4 +19,6 @@ public interface UsersService {
     Long delete(Long id);
 
     String login(Map<String, String> users);
+
+    UsersUpdateResponseDto update(UsersUpdateRequestDto usersUpdateRequestDto) throws Exception;
 }

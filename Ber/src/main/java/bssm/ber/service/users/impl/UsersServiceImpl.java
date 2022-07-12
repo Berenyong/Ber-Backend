@@ -2,8 +2,11 @@ package bssm.ber.service.users.impl;
 
 import bssm.ber.domain.users.Users;
 import bssm.ber.domain.users.UsersRepository;
+import bssm.ber.security.SecurityUtil;
 import bssm.ber.security.jwt.JwtTokenProvider;
 import bssm.ber.service.users.UsersService;
+import bssm.ber.web.dto.users.UsersUpdateRequestDto;
+import bssm.ber.web.dto.users.UsersUpdateResponseDto;
 import bssm.ber.web.dto.users.UsersJoinRequestDto;
 import bssm.ber.web.dto.users.UsersResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -70,14 +73,31 @@ public class UsersServiceImpl implements UsersService {
     }
 
     public String login(Map<String, String> users) {
-        Optional<Users> user = Optional.ofNullable(usersRepository.findByEmail(users.get("email"))
+        Optional<Users> findUser = Optional.ofNullable(usersRepository.findByEmail(users.get("email"))
                 .orElseThrow(() -> new IllegalArgumentException("가입되지 않은 Email입니다.")));
-        Users findUser = user.get();
-        if (!users.get("password").equals(findUser.getPassword())){
+        Users user = findUser.get();
+
+        String password = users.get("password");
+        if (!user.checkPassword(passwordEncoder, password)) {
             throw new IllegalArgumentException("잘못된 비밀번호입니다.");
         }
 
-        return jwtTokenProvider.createToken(findUser.getUsername(), findUser.getRoles());
+        return jwtTokenProvider.createToken(user.getUsername(), user.getRoles());
+    }
+
+    @Transactional
+    @Override
+    public UsersUpdateResponseDto update(UsersUpdateRequestDto request) throws Exception {
+        Users user = usersRepository.findByEmail(SecurityUtil.getLoginUserEmail())
+                .orElseThrow(() -> new Exception("로그인이 필요합니다."));
+
+        user.updateEmail(request.getEmail());
+        user.updatePassword(passwordEncoder, request.getPassword());
+        user.updateNickname(request.getNickname());
+        user.updateGitLink(request.getGitLink());
+        user.updateBlogLink(request.getBlogLink());
+
+        return new UsersUpdateResponseDto(user);
     }
 
 }
