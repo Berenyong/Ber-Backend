@@ -13,6 +13,7 @@ import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -53,6 +54,37 @@ public class Users extends BaseTimeEntity implements UserDetails {
 
     @Column(length = 1000)
     private String blogLink;
+
+    // Member Update
+    public void updateEmail(String email) {
+        this.email = email;
+    }
+
+    public void updateNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public void updatePassword(PasswordEncoder passwordEncoder, String password) {
+        this.password = passwordEncoder.encode(password);
+    }
+
+    public void updateGitLink(String gitLink) {
+        this.gitLink = gitLink;
+    }
+
+    public void updateBlogLink(String blogLink) {
+        this.blogLink = blogLink;
+    }
+
+    // 패스워드 암호화
+    public void encodePassword(PasswordEncoder passwordEncoder) {
+        this.password = passwordEncoder.encode(password);
+    }
+
+    // 회원가입시 패스워드 일치 확인
+    public boolean checkPassword(PasswordEncoder passwordEncoder, String checkPassword) {
+        return passwordEncoder.matches(checkPassword, getPassword());
+    }
 
     //== 회원탈퇴 -> 작성한 게시물, 댓글 모두 삭제 ==//
     @Builder.Default
@@ -133,7 +165,6 @@ public class Users extends BaseTimeEntity implements UserDetails {
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
     }
-
     @Override
     public String getUsername() {
         return email;

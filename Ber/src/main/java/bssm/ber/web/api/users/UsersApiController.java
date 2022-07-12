@@ -11,13 +11,13 @@ import java.util.Map;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/ber/api/users")
+@RequestMapping("/user")
 public class UsersApiController {
 
     private final UsersService usersService;
 
     @PostMapping("/join")
-    public Long joinUser(@RequestBody UsersJoinRequestDto usersJoinRequestDto){
+    public Long joinUser(@RequestBody UsersJoinRequestDto usersJoinRequestDto) throws Exception {
         return usersService.join(usersJoinRequestDto);
     }
 

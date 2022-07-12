@@ -7,6 +7,7 @@ import bssm.ber.service.users.UsersService;
 import bssm.ber.web.dto.users.UsersJoinRequestDto;
 import bssm.ber.web.dto.users.UsersResponseDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,12 +22,24 @@ import java.util.stream.Collectors;
 public class UsersServiceImpl implements UsersService {
 
     private final UsersRepository usersRepository;
+    private final PasswordEncoder passwordEncoder;
     private final JwtTokenProvider jwtTokenProvider;
 
     @Transactional
     @Override
-    public Long join(UsersJoinRequestDto requestDto) {
-        return usersRepository.save(requestDto.toEntity()).getId();
+    public Long join(UsersJoinRequestDto request) throws Exception {
+
+        if (usersRepository.findByEmail(request.getEmail()).isPresent()) {
+            throw new Exception("이미 존재하는 이메일입니다.");
+        }
+        if (!request.getPassword().equals(request.getCheckPassword())){
+            throw new Exception("비밀번호가 일치하지 않습니다.");
+        }
+
+        Users user = usersRepository.save(request.toEntity());
+        user.encodePassword(passwordEncoder);
+
+        return user.getId();
     }
 
     @Override

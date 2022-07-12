@@ -11,4 +11,5 @@ public interface FreePostsRepository extends JpaRepository<FreePosts, Long> {
 
     @Query("select f from FreePosts f where f.title = :title")
     List<FreePosts> findByTitle(@Param("title") String title);
+
 }

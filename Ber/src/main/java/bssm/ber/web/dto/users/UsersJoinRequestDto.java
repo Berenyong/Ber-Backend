@@ -19,6 +19,7 @@ public class UsersJoinRequestDto {
     private String nickname;
     private int age;
     private String password;
+    private String checkPassword;
 
     private List<String> roles;
 

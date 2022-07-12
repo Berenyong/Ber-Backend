@@ -8,7 +8,7 @@ import java.util.Map;
 
 public interface UsersService {
 
-    Long join(UsersJoinRequestDto requestDto);
+    Long join(UsersJoinRequestDto requestDto) throws Exception;
 
     UsersResponseDto findUser(Long id);
 
