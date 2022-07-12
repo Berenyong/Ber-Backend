@@ -14,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -41,6 +42,7 @@ public class UsersServiceImpl implements UsersService {
 
         Users user = usersRepository.save(request.toEntity());
         user.encodePassword(passwordEncoder);
+        user.addUserAuthority();
 
         return user.getId();
     }
@@ -82,7 +84,10 @@ public class UsersServiceImpl implements UsersService {
             throw new IllegalArgumentException("잘못된 비밀번호입니다.");
         }
 
-        return jwtTokenProvider.createToken(user.getUsername(), user.getRoles());
+        List<String> roles = new ArrayList<>();
+        roles.add(user.getRole().name());
+
+        return jwtTokenProvider.createToken(user.getUsername(), roles);
     }
 
     @Transactional

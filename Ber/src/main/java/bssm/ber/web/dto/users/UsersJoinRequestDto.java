@@ -21,15 +21,12 @@ public class UsersJoinRequestDto {
     private String password;
     private String checkPassword;
 
-    private List<String> roles;
-
     public Users toEntity(){
         return Users.builder()
                 .email(email)
                 .nickname(nickname)
                 .age(age)
                 .password(password)
-                .roles(Collections.singletonList("ROLE_USER"))
                 .build();
     }
 }

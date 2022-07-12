@@ -16,7 +16,7 @@ public class UsersResponseDto {
     private String nickname;
     private int age;
     private String password;
-    private List<String> roles;
+    private String role;
 
     @Builder
     public UsersResponseDto(Users users) {
@@ -25,7 +25,7 @@ public class UsersResponseDto {
         this.nickname = users.getNickname();
         this.age = users.getAge();
         this.password = users.getPassword();
-        this.roles = users.getRoles();
+        this.role = users.getRole().name();
     }
 
 }

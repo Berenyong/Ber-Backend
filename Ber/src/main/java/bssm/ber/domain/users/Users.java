@@ -10,6 +10,7 @@ import bssm.ber.domain.posts.posts.MajorPosts;
 import bssm.ber.domain.posts.posts.ManagerPosts;
 import bssm.ber.domain.posts.posts.ShareMajorPosts;
 import lombok.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,6 +24,7 @@ import java.util.stream.Collectors;
 
 import static javax.persistence.CascadeType.ALL;
 
+@Slf4j
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
@@ -45,9 +47,8 @@ public class Users extends BaseTimeEntity implements UserDetails {
     @Column(length = 100)
     private String password;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    @Builder.Default
-    private List<String> roles = new ArrayList<>();
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     @Column(length = 1000)
     private String gitLink;
@@ -84,6 +85,11 @@ public class Users extends BaseTimeEntity implements UserDetails {
     // 회원가입시 패스워드 일치 확인
     public boolean checkPassword(PasswordEncoder passwordEncoder, String checkPassword) {
         return passwordEncoder.matches(checkPassword, getPassword());
+    }
+
+    // 회원가입시 USER 권한 부여(Default : USER)
+    public void addUserAuthority() {
+        this.role = Role.USER;
     }
 
     //== 회원탈퇴 -> 작성한 게시물, 댓글 모두 삭제 ==//
@@ -161,9 +167,11 @@ public class Users extends BaseTimeEntity implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.roles.stream()
-                .map(SimpleGrantedAuthority::new)
-                .collect(Collectors.toList());
+        ArrayList<GrantedAuthority> auth = new ArrayList<>();
+        auth.add(new SimpleGrantedAuthority(role.name()));
+        log.info("role.name : " + role.name());
+
+        return auth;
     }
     @Override
     public String getUsername() {
