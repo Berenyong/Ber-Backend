@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 
-@RequestMapping("/ber/api/posts/free")
+@RequestMapping("/posts/free")
 @RequiredArgsConstructor
 @RestController
 public class FreePostsApiController {

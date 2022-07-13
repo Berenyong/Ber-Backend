@@ -1,4 +1,4 @@
-package bssm.ber.security;
+package bssm.ber.global.config;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;

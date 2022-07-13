@@ -7,7 +7,7 @@ import bssm.ber.web.generic.Result;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("/ber/api/posts/manager")
+@RequestMapping("/posts/manager")
 @RequiredArgsConstructor
 @RestController
 public class ManagerPostsApiController {

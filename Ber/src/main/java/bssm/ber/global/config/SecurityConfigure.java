@@ -1,7 +1,7 @@
-package bssm.ber.security;
+package bssm.ber.global.config;
 
-import bssm.ber.security.jwt.JwtAuthenticationFilter;
-import bssm.ber.security.jwt.JwtTokenProvider;
+import bssm.ber.global.jwt.JwtAuthenticationFilter;
+import bssm.ber.global.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
         import org.springframework.context.annotation.Bean;
         import org.springframework.security.authentication.AuthenticationManager;
@@ -42,10 +42,8 @@ public class SecurityConfigure extends WebSecurityConfigurerAdapter {
                 .antMatchers("/user/join").permitAll()
                 .antMatchers("/user/login").permitAll()
                 .antMatchers("/user/find/**").permitAll()
-                .antMatchers("/ber/api/posts/manager/**")
+                .antMatchers("/posts/manager/**")
                 .access("hasRole('MANAGER') or hasRole('ADMIN')")
-                .antMatchers("/ber/api/posts/**")
-                .access("hasRole('USER') or hasRole('MANAGER') or hasRole('ADMIN')")
                 .anyRequest().authenticated() // 그외 나머지 요청은 모두 인증 필요
                 .and()
                 .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider),

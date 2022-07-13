@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
-@RequestMapping("/ber/api/posts/manager/comment")
+@RequestMapping("/manager/comment")
 @RestController
 public class ManagerPostsCommentApiController {
 

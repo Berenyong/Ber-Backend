@@ -1,4 +1,4 @@
-package bssm.ber.security.jwt;
+package bssm.ber.global.jwt;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;

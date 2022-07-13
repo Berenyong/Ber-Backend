@@ -1,4 +1,4 @@
-package bssm.ber.security.jwt;
+package bssm.ber.global.config;
 
 import bssm.ber.domain.users.UsersRepository;
 import lombok.RequiredArgsConstructor;

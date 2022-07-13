@@ -2,8 +2,8 @@ package bssm.ber.service.users.impl;
 
 import bssm.ber.domain.users.Users;
 import bssm.ber.domain.users.UsersRepository;
-import bssm.ber.security.SecurityUtil;
-import bssm.ber.security.jwt.JwtTokenProvider;
+import bssm.ber.global.config.SecurityUtil;
+import bssm.ber.global.jwt.JwtTokenProvider;
 import bssm.ber.service.users.UsersService;
 import bssm.ber.web.dto.users.UsersUpdateRequestDto;
 import bssm.ber.web.dto.users.UsersUpdateResponseDto;

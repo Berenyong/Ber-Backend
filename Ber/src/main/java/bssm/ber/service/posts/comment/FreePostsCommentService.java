@@ -12,6 +12,6 @@ public interface FreePostsCommentService {
 
     public List<FreePostsCommentResponseDto> findAllDesc(Long id);
 
-    public Long updateComment(Long id, FreePostsCommentRequestDto requestDto);
+    public String updateComment(Long id, FreePostsCommentRequestDto requestDto);
     public Long deleteComment(Long id);
 }

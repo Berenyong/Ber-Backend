@@ -5,11 +5,12 @@ import bssm.ber.domain.posts.comment.FreePostsComment;
 import bssm.ber.domain.posts.comment.repository.FreePostsCommentRepository;
 import bssm.ber.domain.posts.posts.repository.FreePostsRepository;
 import bssm.ber.domain.users.UsersRepository;
-import bssm.ber.security.SecurityUtil;
+import bssm.ber.global.config.SecurityUtil;
 import bssm.ber.service.posts.comment.FreePostsCommentService;
 import bssm.ber.web.dto.posts.comment.request.FreePostsCommentRequestDto;
 import bssm.ber.web.dto.posts.comment.response.FreePostsCommentResponseDto;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,6 +18,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -49,7 +51,8 @@ public class FreePostsCommentServiceImpl implements FreePostsCommentService {
 
         freePostsCommentRepository.save(freePostsComment);
 
-        return requestDto.getId();
+        log.info(freePostsComment.getId().toString());
+        return freePostsComment.getId();
     }
 
     @Override
@@ -60,21 +63,23 @@ public class FreePostsCommentServiceImpl implements FreePostsCommentService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional
     @Override
-    public Long updateComment(Long id, FreePostsCommentRequestDto requestDto) {
+    public String updateComment(Long id, FreePostsCommentRequestDto requestDto) {
         FreePostsComment freePostsComment = freePostsCommentRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 댓글이 존재하지 않습니다."));
 
         freePostsComment.updateComment(requestDto.getComment());
-        return freePostsComment.getId();
+        return freePostsComment.getComment();
     }
 
+    @Transactional
     @Override
     public Long deleteComment(Long id) {
-        Optional<FreePostsComment> byId = freePostsCommentRepository.findById(id);
-        FreePostsComment freePostsComment = byId.get();
+        Optional<FreePostsComment> comment = Optional.ofNullable(freePostsCommentRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 댓글입니다.")));
 
         freePostsCommentRepository.deleteById(id);
-        return freePostsComment.getId();
+        return comment.get().getId();
     }
 }

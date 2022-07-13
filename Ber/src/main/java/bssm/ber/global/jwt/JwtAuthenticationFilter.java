@@ -1,4 +1,4 @@
-package bssm.ber.security.jwt;
+package bssm.ber.global.jwt;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;

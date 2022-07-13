@@ -5,7 +5,7 @@ import bssm.ber.domain.posts.comment.repository.MajorPostsCommentRepository;
 import bssm.ber.domain.posts.posts.MajorPosts;
 import bssm.ber.domain.posts.posts.repository.MajorPostsRepository;
 import bssm.ber.domain.users.UsersRepository;
-import bssm.ber.security.SecurityUtil;
+import bssm.ber.global.config.SecurityUtil;
 import bssm.ber.service.posts.comment.MajorPostsCommentService;
 import bssm.ber.web.dto.posts.comment.request.MajorPostsCommentRequestDto;
 import bssm.ber.web.dto.posts.comment.response.MajorPostsCommentResponseDto;

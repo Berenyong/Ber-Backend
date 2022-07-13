@@ -34,13 +34,13 @@ public class FreePostsComment extends BaseTimeEntity {
     @JoinColumn(name = "users_id")
     private Users writer;
 
-    @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "parent_id")
-    private FreePostsComment parent;
+//    @ManyToOne(fetch = LAZY)
+//    @JoinColumn(name = "parent_id")
+//    private FreePostsComment parent;
 
     //== 부모 댓글을 삭제해도 자식 댓글은 남아있습니다. ==//
-    @OneToMany(mappedBy = "parent")
-    private List<FreePostsComment> childList = new ArrayList<>();
+//    @OneToMany(mappedBy = "parent")
+//    private List<FreePostsComment> childList = new ArrayList<>();
 
     public void updateComment(String comment) {
         this.comment = comment;
@@ -57,13 +57,13 @@ public class FreePostsComment extends BaseTimeEntity {
         post.addComment(this);
     }
 
-    public void confirmParent(FreePostsComment parent){
-        this.parent = parent;
-        parent.addChild(this);
-    }
+//    public void confirmParent(FreePostsComment parent){
+//        this.parent = parent;
+//        parent.addChild(this);
+//    }
 
-    public void addChild(FreePostsComment child){
-        childList.add(child);
-    }
+//    public void addChild(FreePostsComment child){
+//        childList.add(child);
+//    }
 
 }

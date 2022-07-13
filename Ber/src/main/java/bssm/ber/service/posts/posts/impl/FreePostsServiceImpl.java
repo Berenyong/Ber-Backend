@@ -1,17 +1,12 @@
 package bssm.ber.service.posts.posts.impl;
 
-import bssm.ber.domain.posts.comment.FreePostsComment;
 import bssm.ber.domain.posts.posts.repository.FreePostsRepository;
 import bssm.ber.domain.posts.posts.FreePosts;
 import bssm.ber.domain.users.UsersRepository;
-import bssm.ber.security.SecurityUtil;
 import bssm.ber.service.posts.posts.FreePostsService;
-import bssm.ber.web.dto.posts.comment.request.FreePostsCommentRequestDto;
 import bssm.ber.web.dto.posts.posts.request.FreePostsCreateRequestDto;
 import bssm.ber.web.dto.posts.posts.response.FreePostsResponseDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

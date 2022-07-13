@@ -51,7 +51,7 @@ public class FreePosts extends BaseTimeEntity {
         this.writer = writer;
         writer.addFreePost(this);
     }
-
+    
     public void addComment(FreePostsComment comment){
         // comment 의 Post 설정은 comment 에서 합니다.
         freePostsComments.add(comment);
