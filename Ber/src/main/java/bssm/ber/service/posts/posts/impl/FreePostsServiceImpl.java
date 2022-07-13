@@ -2,7 +2,9 @@ package bssm.ber.service.posts.posts.impl;
 
 import bssm.ber.domain.posts.posts.repository.FreePostsRepository;
 import bssm.ber.domain.posts.posts.FreePosts;
+import bssm.ber.domain.users.Users;
 import bssm.ber.domain.users.UsersRepository;
+import bssm.ber.global.config.SecurityUtil;
 import bssm.ber.service.posts.posts.FreePostsService;
 import bssm.ber.web.dto.posts.posts.request.FreePostsCreateRequestDto;
 import bssm.ber.web.dto.posts.posts.response.FreePostsResponseDto;
@@ -26,6 +28,11 @@ public class FreePostsServiceImpl implements FreePostsService {
     @Transactional
     @Override
     public Long create(FreePostsCreateRequestDto requestDto){
+        Users users = usersRepository.findByEmail(SecurityUtil.getLoginUserEmail())
+                .orElseThrow(() -> new IllegalArgumentException("로그인 후 이용할 수 있습니다."));
+
+        requestDto.setWriter(users);
+
         return freePostsRepository.save(requestDto.toEntity()).getId();
     }
 
