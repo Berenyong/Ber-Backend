@@ -47,9 +47,9 @@ public class UsersApiController {
         System.out.println("code match : " + EmailServiceImpl.ePw.equals(code));
 
         if (EmailServiceImpl.ePw.equals(code)) {
-            result = 1;
+            result = 1; // 성공
         } else {
-            result = 0;
+            result = 0; // 실패
         }
 
         return result;
@@ -67,10 +67,10 @@ public class UsersApiController {
         return usersService.findUser(id);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/delete")
     @ResponseStatus(HttpStatus.OK)
-    public Long deleteUser(@PathVariable Long id){
-        return usersService.delete(id);
+    public Long deleteUser(){
+        return usersService.delete();
     }
 
     @PostMapping("/login")

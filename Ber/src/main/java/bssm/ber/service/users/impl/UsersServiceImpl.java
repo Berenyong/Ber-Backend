@@ -14,10 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -66,12 +63,13 @@ public class UsersServiceImpl implements UsersService {
 
     @Transactional
     @Override
-    public Long delete(Long id) {
-        Optional<Users> byId = Optional.ofNullable(usersRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 회원입니다.")));
-        usersRepository.deleteById(id);
+    public Long delete() {
+        Users users = usersRepository.findByEmail(SecurityUtil.getLoginUserEmail())
+                .orElseThrow(() -> new IllegalArgumentException("로그인 후 이용해주세요."));
 
-        return byId.get().getId();
+        usersRepository.deleteById(users.getId());
+
+        return users.getId();
     }
 
     public String login(Map<String, String> users) {

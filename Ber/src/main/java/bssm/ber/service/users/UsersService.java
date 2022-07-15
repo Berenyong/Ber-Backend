@@ -16,7 +16,7 @@ public interface UsersService {
 
     List<UsersResponseDto> findUsers(String nickname);
 
-    Long delete(Long id);
+    Long delete();
 
     String login(Map<String, String> users);
 

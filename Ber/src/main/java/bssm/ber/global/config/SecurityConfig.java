@@ -41,7 +41,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests() // 요청에 대한 사용권한 체크
                 .antMatchers("/user/join").permitAll()
                 .antMatchers("/user/login").permitAll()
-                .antMatchers("/user/find/**").permitAll()
+                .antMatchers("/user/**").permitAll()
+                .antMatchers("/user/checkCode/**").permitAll()
+                .antMatchers("/posts/free/**").permitAll()
                 .antMatchers("/posts/manager/**")
                 .access("hasRole('MANAGER') or hasRole('ADMIN')")
                 .anyRequest().authenticated() // 그외 나머지 요청은 모두 인증 필요

@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
-@RequestMapping("/comment/free")
+@RequestMapping("/posts/free/comment")
 @RestController
 public class FreePostsCommentApiController {
 

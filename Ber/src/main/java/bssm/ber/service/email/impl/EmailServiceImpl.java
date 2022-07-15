@@ -8,7 +8,6 @@ import javax.mail.internet.MimeMessage;
 
 import bssm.ber.service.email.EmailService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -31,20 +30,18 @@ public class EmailServiceImpl implements EmailService {
         message.setSubject("Ber 인증번호가 도착했습니다."); // 제목
 
         String msgg = "";
-        msgg += "<div style='margin:100px;'>";
         msgg += "<h1> 안녕하세요 Ber입니다. </h1>";
-        msgg += "<p>아래 코드를 회원가입 창으로 돌아가 입력해주세요.<p>";
-        msgg += "<p>감사합니다.<p>";
-        msgg += "<br>";
+        msgg += "<p>아래 코드를 회원가입 창으로 돌아가 입력해주세요. 감사합니다.<p>";
         msgg += "<div align='center' style='border:1px solid black; font-family:verdana';>";
         msgg += "<h3 style='color:blue;'>회원가입 코드입니다.</h3>";
         msgg += "<div style='font-size:130%'>";
         msgg += "CODE : <strong>";
         msgg += ePw + "</strong><div><br/> ";
         msgg += "</div>";
-        message.setText(msgg, "utf-8", "html");// 내용
+        message.setText(msgg, "utf-8", "html"); // 내용
         message.setFrom(new InternetAddress("rltgjqmduftlagl@gmail.com", "Ber"));// 보내는 사람
 
+        msgg += "<div style='margin:100px;'>";
         return message;
     }
 
@@ -59,15 +56,12 @@ public class EmailServiceImpl implements EmailService {
             switch (index) {
                 case 0:
                     key.append((char) ((int) (rnd.nextInt(26)) + 97));
-                    //  a~z  (ex. 1+97=98 => (char)98 = 'b')
                     break;
                 case 1:
                     key.append((char) ((int) (rnd.nextInt(26)) + 65));
-                    // A~Z
                     break;
                 case 2:
                     key.append((rnd.nextInt(10)));
-                    // 0~9
                     break;
             }
         }

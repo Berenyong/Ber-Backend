@@ -17,13 +17,8 @@ public class FreePostsApiController {
     private final FreePostsService freePostsService;
 
     @PostMapping("/create")
-    public Long createPost(@RequestBody FreePostsCreateRequestDto freePostsCreateRequestDto,
-                           Principal principal){
-        if (principal.getName() != null){
-            return freePostsService.create(freePostsCreateRequestDto);
-        }else {
-            throw new IllegalArgumentException("현재 로그인 하지 않은 상태입니다.");
-        }
+    public Long createPost(@RequestBody FreePostsCreateRequestDto freePostsCreateRequestDto){
+        return freePostsService.create(freePostsCreateRequestDto);
     }
 
     @GetMapping("/find/title/{title}")
