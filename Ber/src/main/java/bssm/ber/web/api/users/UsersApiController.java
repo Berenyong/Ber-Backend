@@ -33,8 +33,7 @@ public class UsersApiController {
     @PostMapping("/email/{address}")
     @ResponseBody
     public void emailConfirm(@PathVariable String address) throws Exception{
-        log.info("address : " + address);
-        System.out.println("전달 받은 이메일 : " + address);
+        log.info("코드 발송 완료!\n" + address + "에서 메일을 확인해주세요.");
         emailService.sendSimpleMessage(address);
     }
 
@@ -50,8 +49,8 @@ public class UsersApiController {
             result = 1; // 성공
         } else {
             result = 0; // 실패
+            throw new IllegalArgumentException("코드를 다시 확인해주세요!");
         }
-
         return result;
     }
 
