@@ -5,8 +5,6 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-application.yml
-
 ### STS ###
 .apt_generated
 .classpath
@@ -20,6 +18,9 @@ bin/
 !**/src/test/**/bin/
 
 ### IntelliJ IDEA ###
+application.yml
+email.properties
+
 .idea
 *.iws
 *.iml
