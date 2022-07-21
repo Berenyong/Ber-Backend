@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 
-@RequestMapping("/posts/free")
+@RequestMapping("/api/free")
 @RequiredArgsConstructor
 @RestController
 public class FreePostsApiController {
@@ -21,12 +21,13 @@ public class FreePostsApiController {
         return freePostsService.create(freePostsCreateRequestDto);
     }
 
-    @GetMapping("/find/title/{title}")
-    public Result findByTitle(@PathVariable String title){
+    // TODO FIX
+    @GetMapping("/find/title")
+    public Result findByTitle(@RequestBody String title){
         return new Result(freePostsService.findByTitle(title));
     }
 
-    @GetMapping("/findAll")
+    @GetMapping("/find/all")
     public Result allPosts() {
         return new Result(freePostsService.all());
     }

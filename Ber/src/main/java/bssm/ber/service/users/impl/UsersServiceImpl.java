@@ -4,6 +4,7 @@ import bssm.ber.domain.users.Users;
 import bssm.ber.domain.users.UsersRepository;
 import bssm.ber.global.config.SecurityUtil;
 import bssm.ber.global.jwt.JwtTokenProvider;
+import bssm.ber.service.email.EmailService;
 import bssm.ber.service.users.UsersService;
 import bssm.ber.web.dto.users.UsersUpdateRequestDto;
 import bssm.ber.web.dto.users.UsersUpdateResponseDto;
@@ -25,6 +26,7 @@ public class UsersServiceImpl implements UsersService {
     private final UsersRepository usersRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtTokenProvider jwtTokenProvider;
+    private final EmailService emailService;
 
     @Transactional
     @Override
@@ -35,6 +37,10 @@ public class UsersServiceImpl implements UsersService {
         }
         if (!request.getPassword().equals(request.getCheckPassword())){
             throw new Exception("비밀번호가 일치하지 않습니다.");
+        }
+
+        if (!emailService.verifyCode(request.getCheckEmailCode())) {
+            throw new Exception("이메일 인증코드가 일치하지 않습니다.");
         }
 
         Users user = usersRepository.save(request.toEntity());
@@ -65,7 +71,7 @@ public class UsersServiceImpl implements UsersService {
     @Override
     public Long delete() {
         Users users = usersRepository.findByEmail(SecurityUtil.getLoginUserEmail())
-                .orElseThrow(() -> new IllegalArgumentException("로그인 후 이용해주세요."));
+                .orElseThrow(() -> new IllegalArgumentException("자신의 계정만 탈퇴할 수 있습니다."));
 
         usersRepository.deleteById(users.getId());
 

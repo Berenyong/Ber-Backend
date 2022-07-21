@@ -15,12 +15,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class ManagerPosts extends BaseTimeEntity {
-
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "managerPosts_id")
-    private Long id;
-
+public class ManagerPosts extends PostsBaseEntity {
     @NotNull
     @Column(length = 100)
     private String title;

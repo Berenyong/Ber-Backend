@@ -19,11 +19,7 @@ import static javax.persistence.FetchType.LAZY;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class FreePosts extends BaseTimeEntity {
-
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "freePosts_id")
-    private Long id;
+public class FreePosts extends PostsBaseEntity {
 
     @NotNull
     @Column(length = 100)

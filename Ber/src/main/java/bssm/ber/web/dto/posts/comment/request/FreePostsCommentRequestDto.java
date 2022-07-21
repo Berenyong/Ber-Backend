@@ -13,13 +13,11 @@ import lombok.NoArgsConstructor;
 @Builder
 public class FreePostsCommentRequestDto {
 
-    private Long id;
     private String comment;
     private FreePosts freePosts;
 
     public FreePostsComment toEntity() {
         return FreePostsComment.builder()
-                .id(id)
                 .comment(comment)
                 .freePosts(freePosts)
                 .build();

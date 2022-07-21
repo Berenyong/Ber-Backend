@@ -14,7 +14,6 @@ public class UsersResponseDto {
     private Long id;
     private String nickname;
     private int age;
-    private String password;
     private String role;
 
     @Builder
@@ -22,7 +21,6 @@ public class UsersResponseDto {
         this.id = users.getId();
         this.nickname = users.getNickname();
         this.age = users.getAge();
-        this.password = users.getPassword();
         this.role = users.getRole().name();
     }
 

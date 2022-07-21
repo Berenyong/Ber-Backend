@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
-@RequestMapping("/posts/free/comment")
+@RequestMapping("/api/free/comments")
 @RestController
 public class FreePostsCommentApiController {
 
@@ -21,7 +21,7 @@ public class FreePostsCommentApiController {
     }
 
     // 현재 접속한 게시판의 댓글을 모두 조회함
-    @GetMapping("/findAll/{id}")
+    @GetMapping("/find/all/{id}")
     public Result findAll(@PathVariable Long id){
         return new Result(freePostsCommentService.findAllDesc(id));
     }

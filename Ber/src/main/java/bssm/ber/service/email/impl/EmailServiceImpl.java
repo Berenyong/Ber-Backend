@@ -8,10 +8,13 @@ import javax.mail.internet.MimeMessage;
 
 import bssm.ber.service.email.EmailService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class EmailServiceImpl implements EmailService {
@@ -84,6 +87,16 @@ public class EmailServiceImpl implements EmailService {
             es.printStackTrace();
             throw new IllegalArgumentException();
         }
+
+    }
+
+    public boolean verifyCode(String code) {
+        log.info("verifyCode : " + code);
+
+        int result;
+        System.out.println("code match : " + ePw.equals(code));
+
+        return ePw.equals(code);
 
     }
 

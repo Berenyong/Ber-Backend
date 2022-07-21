@@ -18,7 +18,7 @@ import java.util.Map;
 @Slf4j
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/users")
 public class UsersApiController {
 
     private final UsersService usersService;
@@ -37,24 +37,7 @@ public class UsersApiController {
         emailService.sendSimpleMessage(address);
     }
 
-    @PostMapping("/checkCode/{code}")
-    @ResponseBody
-    public int verifyCode(@PathVariable String code) {
-        log.info("verifyCode : " + code);
-
-        int result;
-        System.out.println("code match : " + EmailServiceImpl.ePw.equals(code));
-
-        if (EmailServiceImpl.ePw.equals(code)) {
-            result = 1; // 성공
-        } else {
-            result = 0; // 실패
-            throw new IllegalArgumentException("코드를 다시 확인해주세요!");
-        }
-        return result;
-    }
-
-    @GetMapping("/find/all/{nickname}")
+    @GetMapping("/finds/{nickname}")
     @ResponseStatus(HttpStatus.OK)
     public Result findUsers(@PathVariable String nickname){
         return new Result(usersService.findUsers(nickname));
