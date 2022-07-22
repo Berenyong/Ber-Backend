@@ -5,6 +5,8 @@ import bssm.ber.domain.posts.posts.FreePosts;
 import bssm.ber.domain.users.Users;
 import bssm.ber.domain.users.UsersRepository;
 import bssm.ber.global.config.SecurityUtil;
+import bssm.ber.global.exception.CustomException;
+import bssm.ber.global.exception.ErrorCode;
 import bssm.ber.service.posts.posts.FreePostsService;
 import bssm.ber.web.dto.posts.posts.request.FreePostsCreateRequestDto;
 import bssm.ber.web.dto.posts.posts.response.FreePostsResponseDto;
@@ -29,7 +31,7 @@ public class FreePostsServiceImpl implements FreePostsService {
     @Override
     public Long create(FreePostsCreateRequestDto requestDto){
         Users users = usersRepository.findByEmail(SecurityUtil.getLoginUserEmail())
-                .orElseThrow(() -> new IllegalArgumentException("로그인 후 이용할 수 있습니다."));
+                .orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_LOGIN));
 
         requestDto.setWriter(users);
 
@@ -53,7 +55,7 @@ public class FreePostsServiceImpl implements FreePostsService {
     @Override
     public FreePostsResponseDto detail(Long id) {
         FreePosts freePosts = freePostsRepository.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("존재하지 않는 게시글입니다."));
+                .orElseThrow(() -> new CustomException(ErrorCode.POSTS_NOT_FOUND));
 
         return FreePostsResponseDto.builder()
                 .freePosts(freePosts)
@@ -64,7 +66,7 @@ public class FreePostsServiceImpl implements FreePostsService {
     @Override
     public Long update(Long id, FreePostsCreateRequestDto request) {
         FreePosts freePosts = freePostsRepository.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("존재하지 않는 게시글입니다."));
+                .orElseThrow(() -> new CustomException(ErrorCode.POSTS_NOT_FOUND));
 
         freePosts.update(request.getTitle(), request.getContent());
         return freePosts.getId();

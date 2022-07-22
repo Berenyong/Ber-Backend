@@ -3,6 +3,8 @@ package bssm.ber.service.users.impl;
 import bssm.ber.domain.users.Users;
 import bssm.ber.domain.users.UsersRepository;
 import bssm.ber.global.config.SecurityUtil;
+import bssm.ber.global.exception.CustomException;
+import bssm.ber.global.exception.ErrorCode;
 import bssm.ber.global.jwt.JwtTokenProvider;
 import bssm.ber.service.email.EmailService;
 import bssm.ber.service.users.UsersService;
@@ -32,14 +34,14 @@ public class UsersServiceImpl implements UsersService {
     public Long join(UsersJoinRequestDto request) throws Exception {
 
         if (usersRepository.findByEmail(request.getEmail()).isPresent()) {
-            throw new Exception("이미 존재하는 이메일입니다.");
+            throw new CustomException(ErrorCode.ALREADY_EXISTS_USER);
         }
         if (!request.getPassword().equals(request.getCheckPassword())){
-            throw new Exception("비밀번호가 일치하지 않습니다.");
+            throw new CustomException(ErrorCode.NOT_MATCH_PASSWORD);
         }
 
         if (!emailService.verifyCode(request.getCheckEmailCode())) {
-            throw new Exception("이메일 인증코드가 일치하지 않습니다.");
+            throw new CustomException(ErrorCode.NOT_MATCH_CODE);
         }
 
         Users user = usersRepository.save(request.toEntity());
@@ -52,7 +54,7 @@ public class UsersServiceImpl implements UsersService {
     @Override
     public UsersResponseDto findUser(Long id) {
         Optional<Users> byId = Optional.ofNullable(usersRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 회원입니다.")));
+                .orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_FOUND)));
         Users users = byId.get();
 
         return new UsersResponseDto(users);
@@ -71,11 +73,11 @@ public class UsersServiceImpl implements UsersService {
     public String delete(UserDeleteRequestDto request) throws Exception {
 
         if (SecurityUtil.getLoginUserEmail() == null) {
-            throw new Exception("로그인 후 이용해주세요.");
+            throw new CustomException(ErrorCode.USER_NOT_LOGIN);
         }
 
         if (!emailService.verifyCode(request.getCheckEmailCode())) {
-            throw new Exception("이메일 인증코드가 일치하지 않습니다.");
+            throw new CustomException(ErrorCode.NOT_MATCH_CODE);
         }
 
         String myAccount = SecurityUtil.getLoginUserEmail();
@@ -87,12 +89,12 @@ public class UsersServiceImpl implements UsersService {
 
     public String login(Map<String, String> users) {
         Optional<Users> findUser = Optional.ofNullable(usersRepository.findByEmail(users.get("email"))
-                .orElseThrow(() -> new IllegalArgumentException("가입되지 않은 Email입니다.")));
+                .orElseThrow(() -> new CustomException(ErrorCode.NOT_MATCH_ACCOUNT)));
         Users user = findUser.get();
 
         String password = users.get("password");
         if (!user.checkPassword(passwordEncoder, password)) {
-            throw new IllegalArgumentException("잘못된 비밀번호입니다.");
+            throw new CustomException(ErrorCode.NOT_MATCH_ACCOUNT);
         }
 
         List<String> roles = new ArrayList<>();

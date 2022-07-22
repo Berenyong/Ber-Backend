@@ -1,8 +1,8 @@
 package bssm.ber.web.api.users;
 
 import bssm.ber.global.config.SecurityUtil;
+import bssm.ber.global.exception.CustomException;
 import bssm.ber.service.email.EmailService;
-import bssm.ber.service.email.impl.EmailServiceImpl;
 import bssm.ber.service.users.UsersService;
 import bssm.ber.web.dto.users.*;
 import bssm.ber.web.dto.users.email.EmailRequestDto;
@@ -12,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Map;
 
 @Slf4j
@@ -25,7 +26,7 @@ public class UsersApiController {
 
     @PostMapping("/join")
     @ResponseStatus(HttpStatus.OK)
-    public Long joinUser(@RequestBody UsersJoinRequestDto usersJoinRequestDto) throws Exception {
+    public Long join(@Valid @RequestBody UsersJoinRequestDto usersJoinRequestDto) throws Exception {
         return usersService.join(usersJoinRequestDto);
     }
 

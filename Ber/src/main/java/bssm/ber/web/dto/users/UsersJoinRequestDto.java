@@ -28,7 +28,6 @@ public class UsersJoinRequestDto {
     @NotBlank(message = "닉네임은 필수 입력 값입니다.")
     private String nickname;
 
-    @NotBlank(message = "나이는 필수 입력 값입니다.")
     private int age;
 
     @NotBlank(message = "비밀번호는 필수 입력 값입니다.")
