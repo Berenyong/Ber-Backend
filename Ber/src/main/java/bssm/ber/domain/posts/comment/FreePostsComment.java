@@ -19,16 +19,12 @@ import static javax.persistence.FetchType.LAZY;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
-public class FreePostsComment extends BaseTimeEntity {
-
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "comment_id")
-    private Long id;
+public class FreePostsComment extends CommentsBaseEntity {
 
     @Column(columnDefinition = "TEXT", nullable = false)
     private String comment;
 
-    private boolean isRemoved= false;
+    private boolean isRemoved = false;
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "freePosts_id")
     private FreePosts freePosts;
@@ -44,12 +40,6 @@ public class FreePostsComment extends BaseTimeEntity {
     //== 부모 댓글을 삭제해도 자식 댓글은 남아있습니다. ==//
     @OneToMany(mappedBy = "parent")
     private List<FreePostsComment> childList = new ArrayList<>();
-
-    @CreatedDate
-    private LocalDateTime createdDate;
-
-    @LastModifiedDate
-    private LocalDateTime modifiedDate;
 
     public void updateComment(String comment) {
         this.comment = comment;

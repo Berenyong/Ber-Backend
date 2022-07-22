@@ -33,9 +33,10 @@ public class FreePostsServiceImpl implements FreePostsService {
         Users users = usersRepository.findByEmail(SecurityUtil.getLoginUserEmail())
                 .orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_LOGIN));
 
-        requestDto.setWriter(users);
+        FreePosts freePosts = requestDto.toEntity();
+        freePosts.confirmWriter(users);
 
-        return freePostsRepository.save(requestDto.toEntity()).getId();
+        return freePostsRepository.save(freePosts).getId();
     }
 
     @Override
@@ -75,10 +76,9 @@ public class FreePostsServiceImpl implements FreePostsService {
     @Transactional
     @Override
     public Long delete(Long id) {
-        Optional<FreePosts> byId = freePostsRepository.findById(id);
-        FreePosts freePosts = byId.get();
-
+        FreePosts freePosts = freePostsRepository.findById(id).get();
         freePostsRepository.deleteById(id);
+
         return freePosts.getId();
     }
 }
