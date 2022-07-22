@@ -6,11 +6,9 @@ import bssm.ber.global.config.SecurityUtil;
 import bssm.ber.global.jwt.JwtTokenProvider;
 import bssm.ber.service.email.EmailService;
 import bssm.ber.service.users.UsersService;
-import bssm.ber.web.dto.users.UsersUpdateRequestDto;
-import bssm.ber.web.dto.users.UsersUpdateResponseDto;
-import bssm.ber.web.dto.users.UsersJoinRequestDto;
-import bssm.ber.web.dto.users.UsersResponseDto;
+import bssm.ber.web.dto.users.*;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.*;
 import java.util.stream.Collectors;
 
+@Slf4j
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 @Service
@@ -69,13 +68,21 @@ public class UsersServiceImpl implements UsersService {
 
     @Transactional
     @Override
-    public Long delete() {
-        Users users = usersRepository.findByEmail(SecurityUtil.getLoginUserEmail())
-                .orElseThrow(() -> new IllegalArgumentException("자신의 계정만 탈퇴할 수 있습니다."));
+    public String delete(UserDeleteRequestDto request) throws Exception {
 
-        usersRepository.deleteById(users.getId());
+        if (SecurityUtil.getLoginUserEmail() == null) {
+            throw new Exception("로그인 후 이용해주세요.");
+        }
 
-        return users.getId();
+        if (!emailService.verifyCode(request.getCheckEmailCode())) {
+            throw new Exception("이메일 인증코드가 일치하지 않습니다.");
+        }
+
+        String myAccount = SecurityUtil.getLoginUserEmail();
+
+        usersRepository.deleteByEmail(SecurityUtil.getLoginUserEmail());
+
+        return myAccount;
     }
 
     public String login(Map<String, String> users) {

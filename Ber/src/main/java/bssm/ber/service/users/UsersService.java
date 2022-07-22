@@ -1,9 +1,6 @@
 package bssm.ber.service.users;
 
-import bssm.ber.web.dto.users.UsersUpdateRequestDto;
-import bssm.ber.web.dto.users.UsersUpdateResponseDto;
-import bssm.ber.web.dto.users.UsersJoinRequestDto;
-import bssm.ber.web.dto.users.UsersResponseDto;
+import bssm.ber.web.dto.users.*;
 
 import java.util.List;
 import java.util.Map;
@@ -16,7 +13,7 @@ public interface UsersService {
 
     List<UsersResponseDto> findUsers(String nickname);
 
-    Long delete();
+    String delete(UserDeleteRequestDto request) throws Exception;
 
     String login(Map<String, String> users);
 

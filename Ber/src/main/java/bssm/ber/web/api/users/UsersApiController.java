@@ -1,12 +1,11 @@
 package bssm.ber.web.api.users;
 
+import bssm.ber.global.config.SecurityUtil;
 import bssm.ber.service.email.EmailService;
 import bssm.ber.service.email.impl.EmailServiceImpl;
 import bssm.ber.service.users.UsersService;
-import bssm.ber.web.dto.users.UsersJoinRequestDto;
-import bssm.ber.web.dto.users.UsersResponseDto;
-import bssm.ber.web.dto.users.UsersUpdateRequestDto;
-import bssm.ber.web.dto.users.UsersUpdateResponseDto;
+import bssm.ber.web.dto.users.*;
+import bssm.ber.web.dto.users.email.EmailRequestDto;
 import bssm.ber.web.generic.Result;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -30,11 +29,11 @@ public class UsersApiController {
         return usersService.join(usersJoinRequestDto);
     }
 
-    @PostMapping("/email/{address}")
-    @ResponseBody
-    public void emailConfirm(@PathVariable String address) throws Exception{
-        log.info("코드 발송 완료!\n" + address + "에서 메일을 확인해주세요.");
-        emailService.sendSimpleMessage(address);
+    @PostMapping("/email")
+    @ResponseStatus(HttpStatus.OK)
+    public void emailConfirm(@RequestBody EmailRequestDto requestDto) throws Exception{
+        log.info("코드 발송 완료!\n" + requestDto.getEmail() + "에서 메일을 확인해주세요.");
+        emailService.sendSimpleMessage(requestDto.getEmail());
     }
 
     @GetMapping("/finds/{nickname}")
@@ -49,10 +48,18 @@ public class UsersApiController {
         return usersService.findUser(id);
     }
 
+    @PostMapping("/email/delete")
+    @ResponseStatus(HttpStatus.OK)
+    public void confirmDeleteEmailSender() throws Exception{
+        String email = SecurityUtil.getLoginUserEmail();
+        log.info("코드 발송 완료!\n" + email + "에서 메일을 확인해주세요.");
+        emailService.sendWithdrawalMessage(email);
+    }
+
     @DeleteMapping("/delete")
     @ResponseStatus(HttpStatus.OK)
-    public Long deleteUser(){
-        return usersService.delete();
+    public String deleteUser(@RequestBody UserDeleteRequestDto request) throws Exception {
+        return usersService.delete(request);
     }
 
     @PostMapping("/login")
